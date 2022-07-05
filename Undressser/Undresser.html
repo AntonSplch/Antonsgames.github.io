@@ -5,6 +5,11 @@
     <title>Undresser</title>
     <style>
     
+/* contain overscroll behaviour only in vertical direction */
+body {
+    overscroll-behavior-y: contain;
+}
+
     a {color: #f70000;
 text-decoration: none;
 border-bottom: 0px solid #fa0808;}
@@ -112,7 +117,7 @@ if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phon
 
     
     action1 = 'touchmove';
-    touch = 0.03;
+    touch = 0.1;
 } 
 else 
 action1 = 'mousemove'; 
