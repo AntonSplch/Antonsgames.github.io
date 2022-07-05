@@ -363,8 +363,8 @@
   
     <!-- Trigger/Open The Modal -->
     <button id="myBtn">КАК ИГРАТЬ?</button>
-<h1><a href ="../index.html">НАЗАД</a></h1>
-  
+    <h1><a href="../index.html">НАЗАД</a></h1>
+  <p>This game created by Anton D., text by Egor S.</p>
     
     <!-- The Modal -->
     <div id="myModal" class="modal">
@@ -381,7 +381,7 @@
   
     <script>
   
-  // Get the modal
+  // Здесь работает стартовое окно. Get the modal
   var modal = document.getElementById("myModal");
   
   // Get the button that opens the modal
@@ -427,6 +427,8 @@
       e4 = document.getElementById("e4");
       f2 = document.getElementById("f2");
       th = document.querySelector("th");
+
+      //это массив правильных ответов
   
       goes = ["e4", "f2", "h1", "g3", "f1", "h2", "g4", "e3", "f5", "h6", "g8", "e7", "c6", "d8", "b7", "a5", "b3", "a1", "c2", "d4", "e6", "g5", "h7", "f8", "d7", "b8", "a6", "c5", "a4", "b2", "d1", "c3", "d5", "c7", "a8", "b6", "c8", "a7", "b5", "d6", "c4", "a3", "b1", "d2", "f3", "e1", "g2", "h4", "g6", "h8", "f7", "e5", "d3", "b4", "a2", "c1", "e2", "g1", "h3", "f4", "h5", "g7", "e8", "f6", "e4"];
       num = [1, 2, 3, 4, 5, 6, 7, 8];
@@ -442,11 +444,19 @@
       elem3.setAttribute("src", "horse.png");
       output.appendChild(elem3);
   
+//стартовая анимация
+    Hints = [f2, d6, f6, g3, c3, g5, c5, d2];
+
+for (h=0;h<8;h++)
+{
+Hints[h].classList.add('borders');
+}
   
       let j = 1;
       f2.addEventListener('click', Fix1);
       e4.style.backgroundColor = "green";
-  
+ 
+  //весь функционал
       function Fix1() {
       //  for (i=1; i<goes.length; i++) {
         { 
@@ -463,9 +473,6 @@
         }}
     
            //РАБОТАЕТ! ТУТ Я ЧИЩУ АНИМАЦИЮ
-  
-       
-    
   
            //try {
          spliter = this.id.split([ ]);
@@ -502,26 +509,18 @@
       letterind2 -= 1;
   alert(err.name); // (3) <--
   } */
-  
-  
-  
+    
           Poem() 
           {
           this.style.backgroundColor = "green";
-          
           j++;
           act2.addEventListener('click', Fix1);
           this.removeEventListener('click', Fix1);
           if (act2 == e4) {
-            //output.id = "crow";
-            //f6.id = "toCrow";
             window.alert("ПОЗДРАВЛЯЕМ! ТЕПЕРЬ ПРОЧИТАЙТЕ, ЧТО ПОЛУЧИЛОСЬ СПРАВА!");
-            //table.id = "crow";
             f6.appendChild(elem2);
-            //output.removeChild(elem3);
             output.appendChild(elem4);
            f6.removeChild(elem);
-            //document.getElementById("f6").removeChild(elem);
             for (n=0; n<9; n++) {
         first = table.rows[n];
         for (k=0;k<9;k++) {
@@ -534,17 +533,10 @@
       }
       }
   
-  
-  
-  
-  
-      //t = this.textContent;
       function Mouve() {
         e4.style.background = "green";
         document.getElementById("e4").removeChild(elem);
         document.getElementById("f2").appendChild(elem);
-        //e4.classList.remove("horse");
-        //f2.classList.add("horse");
         t = this.textContent;
         Poem();
         this.style.background = "green";
@@ -555,7 +547,6 @@
         var tag = document.createElement("p");
         var text = document.createTextNode(t);
         tag.appendChild(text);
-        //var element = document.getElementById("output");
         output.appendChild(tag);
       }
   
