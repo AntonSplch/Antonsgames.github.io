@@ -110,10 +110,10 @@ border-bottom: 0px solid #fa0808;}
 
 if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
 
-    window.alert("Вы используете мобильное устройство (телефон или планшет).");
-    action1 = 'touchmove';
+    
+    action1 = 'touchstart';
 } 
-else window.alert("Вы используете ПК.");
+else 
 action1 = 'mousemove'; 
 
 
