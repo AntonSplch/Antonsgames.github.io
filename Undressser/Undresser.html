@@ -107,6 +107,18 @@ border-bottom: 0px solid #fa0808;}
 
 
       <script>
+
+if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
+
+    window.alert("Вы используете мобильное устройство (телефон или планшет).");
+    action1 = 'touchmove';
+} 
+else window.alert("Вы используете ПК.");
+action1 = 'mousemove'; 
+
+
+
+
       //window.onload = Opacity;
       DressedManUp = document.getElementById("0");
       DressedManDown = document.getElementById("1");
@@ -119,11 +131,11 @@ border-bottom: 0px solid #fa0808;}
 
 
 
-        DressedManBoots.addEventListener('mousemove', Op1);
-        DressedManUp.addEventListener('mousemove', Op1);
-        DressedManDown.addEventListener('mousemove', Op1);
-        DressedWoman.addEventListener('mousemove', Op1);
-        DressedWoman2.addEventListener('mousemove', Op1);
+        DressedManBoots.addEventListener(action1, Op1);
+        DressedManUp.addEventListener(action1, Op1);
+        DressedManDown.addEventListener(action1, Op1);
+        DressedWoman.addEventListener(action1, Op1);
+        DressedWoman2.addEventListener(action1, Op1);
         mass = [1,1,1,1,1,1,1,1];
 
 
