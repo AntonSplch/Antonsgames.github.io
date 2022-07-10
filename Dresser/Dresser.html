@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<script type="text/javascript" src="js/jquery-3.4.1.min.js" ></script>
+		<style>
+		H1 {position: absolute; 
+			left: 700px;
+			
+			color: rgb(89, 88, 88);
+			}
+
+			H2 {position: absolute; 
+			left: 700px;
+			top: 400px;
+			color: rgb(89, 88, 88);
+			}
+
+           .Man {
+			position: absolute;
+			width: 800px;
+			height: 800px;
+			left: 400px;
+			top: 100px;}
+
+			#woman{content: url(Undressedwoman2.jpg);}
+
+			#item1 {
+				
+				position: absolute;
+				left: 200px;
+				top: 200px;
+			}
+
+	
+
+			.sixties{
+				width: 290px;
+				height: 490px;
+				content: url('60s.png');
+			position: absolute;
+		}
+
+			.history{
+				width: 430px;
+				height: 390px;
+				content: url('history.png');
+				}
+
+		
+			#item2 {
+				position:absolute;
+				left: 500px;
+				top: 500px;
+			
+				
+			}
+
+			.classic{
+				width: 400px;
+				height: 440px;
+				content: url('dress1.png');
+				}
+
+			.goth{
+				width: 300px;
+				height: 390px;
+				content: url('goth3.png');
+			position: absolute;
+		}
+
+.choker {	width: 50px;
+				height: 22px;
+			content: url('2.png');
+			}
+
+			.choker2 {	width: 80px;
+				height: 100px;
+			content: url('3.png');
+			}
+
+			.crown {	width: 80px;
+				height: 100px;
+			content: url('crown.png');
+			}
+
+			.necklace {	width: 80px;
+				height: 60px;
+			content: url('necklace.png');
+			}
+
+			.top2 {	width: 300px;
+				height: 300px;
+			content: url('top2.png');
+			}
+		
+			.top1 {	width: 100px;
+				height: 180px;
+			content: url('top1.png');
+			}
+		
+		</style>
+		<title></title>
+	</head>
+	<body>
+		<H1 id="change"><button>CHANGE AN ITEM</button></H1>
+		<H2 id="fix"><button>FIX AND GET NEW ONE</button></H2>
+		<div id= woman></div>
+
+		<div class="garment" id="item1"></div>
+		<div class="garment" id="item2"></div>
+		<div class="garment" id="output"></div>
+		<script>
+			let ball=document.getElementById("item1");
+			let output=document.getElementById("output");
+			var woman=document.getElementById("woman");
+			var change=document.getElementById("change");
+			let fix=document.getElementById("fix");
+			fix.addEventListener('click', Fix);
+			let ball2 = document.getElementById("item2");
+			change.addEventListener('click', Change);
+			let coords;
+
+			window.onmousemove = function Coords(event) {
+
+coords = item1.getBoundingClientRect();
+console.log(coords.top);
+console.log(coords.bottom); }
+		
+       
+			function Display() 
+			{
+			const img = document.createElement("img");
+			final2 = final[0]-1;
+	       
+			let plus = dresses[final2]; 
+img.src = plus+".jpg";
+window.alert(plus);
+
+document.body.appendChild(img);
+
+img.classList.add("Man");
+}
+
+function Display2() 
+			{
+			const img = document.createElement("img");
+img.src = "Adam.jpg";
+document.body.appendChild(img);
+
+img.classList.add("Man");
+}
+
+
+
+		function Fix () {
+			final.push(dressnumber);
+			window.alert(final);
+			window.alert(result += 1);
+			ball.removeEventListener('mousedown', Move);
+			change.removeEventListener('click', Change);
+			change.addEventListener('click', Change2);
+				ball = ball2;
+				ball2.classList.add(things[dressnumber]);
+			//let status = "true"; 
+			ball2.addEventListener('mousedown', Move);
+if (result==1) {
+    window.alert(dressnumber+'this');
+
+	if (dressnumber==1 && (coords.top>180 || coords.top<170 || coords.bottom>620 || coords.bottom<610))  {Display2();}; 
+		if (dressnumber==2 && (coords.top>150 || coords.top<140 || coords.bottom>640 || coords.bottom<630))  {Display2();}; 
+			if (dressnumber==3 && (coords.top>208|| coords.top<187 || coords.bottom>598 || coords.bottom<565))  {Display2();}; 
+				if (dressnumber==4 && (coords.top>251 || coords.top<239 || coords.bottom>641 || coords.bottom<630))  {Display2();}; 
+
+};
+			if (result==2)
+		{
+			if (final[0]==0) {Display2()}; 
+			
+			if (result==2 && final[0]!==0) {Display();}
+		}
+		}
+		//fix.onclick = Fix();
+			let dressnumber = 0;
+			let result = 0;
+			let dresses = ["classic", "sixties","goth","history"];
+			let things = ["top1","choker", "necklace","choker2", "crown"];
+			let final = [];
+
+			function Change () {
+				ball.classList.remove(dresses[dressnumber-1]);
+				ball.classList.add(dresses[dressnumber]);
+				dressnumber += 1;
+				
+				if (dressnumber==5){
+					dressnumber=0;
+			}
+			}
+
+			function Change2 () {
+				dressnumber += 1;
+				window.alert(dressnumber);
+				ball.classList.remove(things[dressnumber-1]);
+				ball.classList.add(things[dressnumber]);
+			
+				if (dressnumber==5){
+					dressnumber=0;
+			}
+
+			}
+		
+		 ball.addEventListener('mousedown', Move);
+	
+		
+
+		 function Move(event) {
+
+			coords = item1.getBoundingClientRect();
+			console.log(coords.top);
+			console.log(coords.bottom);
+			
+			//console.log(item1.style.left);
+			//67 174
+			
+  // (1) prepare to moving: make absolute and on top by z-index
+  ball.style.position = 'absolute';
+  ball.style.zIndex = 1000;
+
+
+
+  // move it out of any current parents directly into body
+  // to make it positioned relative to the body
+  document.body.append(ball);
+
+  // centers the ball at (pageX, pageY) coordinates - why /2???
+  function moveAt(pageX, pageY) {
+    ball.style.left = pageX - ball.offsetWidth / 2 + 'px';
+    ball.style.top = pageY - ball.offsetHeight / 2 + 'px';
+  }
+
+  // move our absolutely positioned ball under the pointer
+  moveAt(event.pageX, event.pageY);
+
+  function onMouseMove(event) {
+    moveAt(event.pageX, event.pageY);
+  }
+
+  // (2) move the ball on mousemove
+  document.addEventListener('mousemove', onMouseMove);
+
+  // (3) drop the ball, remove unneeded handlers
+  ball.onmouseup = function() {
+    document.removeEventListener('mousemove', onMouseMove);
+    ball.onmouseup = null;
+  };
+
+};
+
+
+
+		</script>
+	</body>
+</html>
+ 
