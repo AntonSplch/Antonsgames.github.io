@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width; initial-scale=1">
 		<script type="text/javascript" src="js/jquery-3.4.1.min.js" ></script>
 		<style>
 		H1 {position: absolute; 
@@ -111,6 +112,17 @@
 		<div class="garment" id="item2"></div>
 		<div class="garment" id="output"></div>
 		<script>
+			
+
+			if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
+actionOver = 'touchmove';
+actionOn= 'ontouchmove';
+} 
+else 
+{actionOver = 'mousemove'; 
+actionOn= 'onmousemove';}
+
+
 			let ball=document.getElementById("item1");
 			let output=document.getElementById("output");
 			var woman=document.getElementById("woman");
@@ -121,7 +133,9 @@
 			change.addEventListener('click', Change);
 			let coords;
 
-			window.onmousemove = function Coords(event) {
+	//WORKS!
+			window.actionOn = function Coords(event)
+			{
 
 coords = item1.getBoundingClientRect();
 console.log(coords.top);
@@ -158,8 +172,8 @@ img.classList.add("Man");
 			window.alert(final);
 			window.alert(result += 1);
 			ball.removeEventListener('mousedown', Move);
-			change.removeEventListener('click', Change);
-			change.addEventListener('click', Change2);
+			change.removeEventListener(actionOver, Change);
+			change.addEventListener(actionOver, Change2);
 				ball = ball2;
 				ball2.classList.add(things[dressnumber]);
 			//let status = "true"; 
