@@ -53,9 +53,9 @@ span:nth-child(5) {
     filter: blur(0);
   }
 }
-    table {font-size: 30px;
+    table {font-size: 40px;
     font-family:'Courier New', Courier, monospace;
-      color: rgb(235, 10, 202);
+      color: rgb(0, 82, 5);
       text-align: left;
     }
 
@@ -67,7 +67,7 @@ border-bottom: 3px solid #fa0808;
 }
 
 p {
-  font-size: 20px;
+  font-size: 15px;
   text-align: center;
   animation-duration: 1s;
   animation-name: slidein;}
@@ -82,7 +82,7 @@ p {
      
         <table >
           <tr>
-            <td>    <span><img src='./index.jpg' id="img"></span></td>
+            <td>    <span><img src='./index.jpg' id="img" ><a href=# onclick=aboutMe() id="link">about me</a></span></td>
             <div >
             <td id="table1">
         <span id="info"></span>
@@ -98,9 +98,7 @@ p {
        <p>
              <a href ="./Poetical_Horse/Poetical_Horse.HTML" onclick="sayHi(this)">РЕШИ ШАХМАТНО-ПОЭТИЧEСКУЮ ЗАДАЧКУ О КОНЕ (CHESS GAME IN RUSSIAN)</A>
       </p>
-      <p><script>di = span.createTextNode('А вот и я');
-       append(di);
-      </script></p>;
+      <p></p>;
       <p>
         <a href ="Undressser/Undresser.html" onclick="sayHi(this)"  >РАЗДЕНЬ ЛЮДЕЙ (UNDRESS PEOPLE) </A>
  </p>
@@ -117,15 +115,30 @@ p {
  <P></P><BR>
  <p>
   <a href ="Lit/Lit.html" onclick="sayHi(this)"  >ТЕСТ НА ЗНАНИЕ РУССКОЙ ЛИТЕРАТУРЫ</A>
-  </div>
+  </p>
+
 </p>
+<P></P><BR>
+<p>
+ <a href ="EXE/FAILED_EXAM.exe">FAILED EXAMS (computer .exe file)</A>
+ </p>
+
+</p>
+<P></P><BR>
+<p>
+ <a href ="EXE/IrregularVerbs.exe">English Irregular verbs practice (computer .exe file)</A>
+ </p>
+
+
+  </div>
+
 
 
 
 
 <script>
 
-
+div1 = document.getElementById("div1");
 span = document.getElementById('info');
 function json(url) {
           return fetch(url).then(res => res.json());
@@ -141,7 +154,7 @@ function json(url) {
          country = data.country_name;
 
      
-        span.innerHTML= "Hello, dear guest from"+" "+city+" ("+country+")";
+        span.innerHTML= "Hello, dear guest from"+" "+city+"/"+country+"!";
          
           // so many more properties
         });
@@ -169,25 +182,12 @@ function json(url) {
 // <p><a href ="javascript:history.back();">BACK</a></p>
 
 l=0; d=0;
-const animation = {
-
-sayHi() {
-  window.alert(event);
- setInterval( function Go() {
-  l+=100;
-img.style.top=l+'px';
-//img.style.left=l+'px';
-img.style.position = "absolute";
-//console.log(img.style);
-}, 1000)
-}
-}
 
 function sayHi(this1)
  {
 a = this.event;
 a.preventDefault();
-document.body.style.backgroundColor="black";
+//document.body.style.backgroundColor="black";
 document.getElementById("table1").innerHTML = '';
 div1 = document.getElementById("div1").innerHTML = '';
 //img.src='./index2.jpg';
@@ -198,7 +198,7 @@ div1 = document.getElementById("div1").innerHTML = '';
 //img.style.left=l+'px';
 
 img.style.position = "absolute";
-img.style.display = "none";
+//img.style.display = "none";
 let alf = ["matrix super program coding", "123456789", "russianhackers3000", "007", "qwerty abc", "LOADING"];
 //for (d=0;d<3;d++) {
 //document.getElementById("table1").innerHTML += alf + alf+"<br/>";
@@ -208,6 +208,44 @@ document.getElementById("div1").innerHTML += alf + alf+"<br/>";
 //}
 if (l==500)
 {  document.location.href = this1.href;}
+}, 10)
+}
+
+k=0;
+
+function aboutMe(this1)
+ {
+  k=0;
+a = this.event;
+a.preventDefault();
+document.body.style.backgroundColor="black";
+document.getElementById("table1").innerHTML = '';
+div1.innerHTML = '';
+img.src='./index2.jpg';
+let alf2 = ["I'm a teacher of literature and foreign languages."];
+document.getElementById("div1").innerHTML += alf2+"<br/>";
+div1.style.fontSize = "30px";
+ interval2 = setInterval( function Go2() {
+  k+=10;
+//img.style.top=l+'px';
+img.style.left=k+'px';
+img.style.position = "absolute";
+//img.style.display = "none";
+link = document.getElementById("link");
+link.innerHTML="";
+document.getElementById("div1").style.color = "green";
+
+if (k==700)
+{ clearInterval(interval2);
+  let back = document.createElement('div');
+back.style.color = "green";
+back.style.fontSize = "30px";
+//document.body.innerHTML = "<strong>НАЗАД(GO BACK)</strong>";
+back.innerHTML = "<br/><a href='./index.html'>НАЗАД(GO BACK)</a>";
+document.body.append(back);
+
+
+}
 }, 10)
 }
 
