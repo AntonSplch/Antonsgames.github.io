@@ -67,50 +67,89 @@ border-bottom: 3px solid #fa0808;
 }
 
 p {
-  font-size: 15px;
+  font-size: 20px;
   text-align: center;
   animation-duration: 1s;
   animation-name: slidein;}
    
         </style>
-        <title>Anton's games</title></head>
+        <title>Anton's games</title>
+        <script>
+  
+      </script>
+      </head>
     <body>
-        <table>
+     
+        <table >
           <tr>
-            <td>    <span><img src='./index.jpg'></span></td>
-
-            <td>
-        <span>Hello world! I'm Anton.</span>
-        <span> I will upload some of my games here,</span>
-        <span>powered by JavaScript, PHP or C#</span>
-        <span>Please, be welcome and try my games:</span>
+            <td>    <span><img src='./index.jpg' id="img"></span></td>
+            <div >
+            <td id="table1">
+        <span id="info"></span>
+        <span> I'll upload here some of my</span>
+        <span>JS/PHP/C games and learinig apps.</span>
+        <span>Be welcome and explore it!</span>
         </td>
-       
+    
     </tr>
+  </div>
 </table>
-
+     <div id="div1">
        <p>
-             <a href ="./Poetical_Horse/Poetical_Horse.HTML">РЕШИ ШАХМАТНО-ПОЭТИЧEСКУЮ ЗАДАЧКУ О КОНЕ (CHESS GAME IN RUSSIAN)</A>
+             <a href ="./Poetical_Horse/Poetical_Horse.HTML" onclick="sayHi(this)">РЕШИ ШАХМАТНО-ПОЭТИЧEСКУЮ ЗАДАЧКУ О КОНЕ (CHESS GAME IN RUSSIAN)</A>
       </p>
-      <p></p>;
+      <p><script>di = span.createTextNode('А вот и я');
+       append(di);
+      </script></p>;
       <p>
-        <a href ="Undressser/Undresser.html">РАЗДЕНЬ ЛЮДЕЙ (UNDRESS PEOPLE)</A>
+        <a href ="Undressser/Undresser.html" onclick="sayHi(this)"  >РАЗДЕНЬ ЛЮДЕЙ (UNDRESS PEOPLE) </A>
  </p>
  <P></P><BR>
  <p>
-  <a href ="Dresser/Dresser.html">ОДЕНЬ ДЕВУШКУ НА СВИДАНИЕ (DRESS A GIRL GET A GUY)</A>
-</p>
-<p>
-<form action="http://anton.great-site.net/welcome_get.php" method="get">
-  By the way, what's your name? <input type="text" name="name"><br>
-  <input type="submit" value="this one!">
-  </form>
-  </p>
-
- <script>
+  <a href ="Dresser/Dresser.html" onclick="sayHi(this)"  >ОДЕНЬ ДЕВУШКУ НА СВИДАНИЕ (DRESS A GIRL GET A GUY)</A>
   
-  oo = navigator.geolocation.getCurrentPosition();
-  window.alert(oo);
+</p>
+<P></P><BR>
+  <p>
+   <a href ="Psycho/Psycho.html" onclick="sayHi(this)"  >ПСИХОДЕЛИЧЕСКИЙ КАНВАС (PSYCHO CANVAS)</A>
+  
+ </p>
+ <P></P><BR>
+ <p>
+  <a href ="Lit/Lit.html" onclick="sayHi(this)"  >ТЕСТ НА ЗНАНИЕ РУССКОЙ ЛИТЕРАТУРЫ</A>
+  </div>
+</p>
+
+
+
+
+<script>
+
+
+span = document.getElementById('info');
+function json(url) {
+          return fetch(url).then(res => res.json());
+        }
+        
+        let apiKey = '78ed43a697a618045bc9ab705f6eca48267e9532b628893566fc8ab4';
+        json(`https://api.ipdata.co?api-key=${apiKey}`).then(data => {
+          console.log(data.ip);
+          console.log(data.city);
+          console.log(data.country_code);
+          console.log(data);
+         city = data.city;
+         country = data.country_name;
+
+     
+        span.innerHTML= "Hello, dear guest from"+" "+city+" ("+country+")";
+         
+          // so many more properties
+        });
+     
+
+
+
+  //console.log(navigator); - so many info! + method of geolocation
 
   
   //для браузера и системы
@@ -128,6 +167,59 @@ p {
 //console.log(Cookie);
 //console.log(document.Referrer);
 // <p><a href ="javascript:history.back();">BACK</a></p>
+
+l=0; d=0;
+const animation = {
+
+sayHi() {
+  window.alert(event);
+ setInterval( function Go() {
+  l+=100;
+img.style.top=l+'px';
+//img.style.left=l+'px';
+img.style.position = "absolute";
+//console.log(img.style);
+}, 1000)
+}
+}
+
+function sayHi(this1)
+ {
+a = this.event;
+a.preventDefault();
+document.body.style.backgroundColor="black";
+document.getElementById("table1").innerHTML = '';
+div1 = document.getElementById("div1").innerHTML = '';
+//img.src='./index2.jpg';
+
+ setInterval( function Go() {
+  l+=10;
+//img.style.top=l+'px';
+//img.style.left=l+'px';
+
+img.style.position = "absolute";
+img.style.display = "none";
+let alf = ["matrix super program coding", "123456789", "russianhackers3000", "007", "qwerty abc", "LOADING"];
+//for (d=0;d<3;d++) {
+//document.getElementById("table1").innerHTML += alf + alf+"<br/>";
+document.getElementById("div1").style.color = "green";
+document.getElementById("div1").innerHTML += alf + alf+"<br/>";
+
+//}
+if (l==500)
+{  document.location.href = this1.href;}
+}, 10)
+}
+
+/*
+<p>
+<form action="http://anton.great-site.net/welcome_get.php" method="get">
+  By the way, what's your name? <input type="text" name="name"><br>
+  <input type="submit" value="this one!">
+  </form>
+  </p>
+*/
+
  </script>
 
 

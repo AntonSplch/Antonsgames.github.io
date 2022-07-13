@@ -1,0 +1,190 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>прямоугольники2</title>
+        <style type="text/css">
+
+            #draw {
+                display: block;
+                border: 1px dotted grey;
+              
+            }
+            #draw2 {
+                display: block;
+                border: 1px dotted grey;
+              
+            }
+          
+        </style>
+       
+      
+       
+
+    </head>
+    <body>
+        <h1 id="h1">РАЗНОЦВЕТНЫЕ ПРЯМОУГОЛЬНИКИ ПОБЕЖДАЮТ ВСЕХ</h1>
+        <button id="button1">СОЗДАТЬ ПРЯМОУГОЛЬНИКИ:</button><p1></p1><p2></p2><p3></p3><p4></p4><p5></p5>
+        <button id="button2">СОЗДАТЬ НАДПИСЬ</button>
+        <button id="button3">ОЧИСТИТЬ</button>
+        <button id="button4">НАРИСОВАТЬ ЗАГОГУЛИНУ</button>
+        <button id="button5">НАРИСОВАТЬ тысячу случайных ЗАГОГУЛИН</button>
+        <button id="button6">НАРИСОВАТЬ чёрную ДЫРУ (щёлкнуть два раза)</button>
+        <button id="button7">БРОСИТЬ КУБИК</button>
+        <button onclick="location.reload()" id="button8">ЭКСТРЕННЫЙ СБРОС</button>
+        
+        <canvas id="draw" width="1300" height="500"></canvas>
+
+
+      
+
+        <script>
+
+
+            const draw = document.getElementById('draw');
+         
+            const ctx = draw.getContext('2d');
+           
+            click = document.getElementById('button1');
+            click.addEventListener('click', Time);
+            click2 = document.getElementById('button2');
+            click2.addEventListener('click', Texting);
+            click3 = document.getElementById('button3');
+            click3.addEventListener('click', Clear);
+            click4 = document.getElementById('button4');
+            click4.addEventListener('click', figure);
+            click5 = document.getElementById('button5');
+            click5.addEventListener('click', randomfigure);
+            click6 = document.getElementById('button6');
+            //click6.addEventListener('click', circle);
+            click6.addEventListener('click', circle20);
+            body = window.document.body;
+            body.addEventListener('keydown', color);
+         
+
+            
+
+
+           let T1, T2; T3; T4;
+           
+          
+           function circle20 () {
+         
+         setTimeout(circle, 1);
+         setTimeout(circle40, 1);
+
+          };
+      
+        function circle40()
+         {
+          Z = 10; 
+           let timerId = setInterval(() => Z++, 50);
+           }
+           
+       
+            function circle () {
+              //Z = Math.random()*100;
+              ctx.beginPath();
+           ctx.arc(600,200, Z, 0, Math.PI * 2);
+           ctx.stroke();
+           setTimeout(circle20, 100);
+              }
+            
+  
+
+            function color () {
+            {
+            R = Math.random()*650
+            R2 = Math.random()*650
+            R3 = Math.random()*650
+            R4 = Math.random()*650
+            T1 = document.querySelector('p1').innerHTML = R.toPrecision(1);
+            T2 = document.querySelector('p2').innerHTML = R2.toPrecision(1);
+            T3 = document.querySelector('p3').innerHTML = R3.toPrecision(1);
+            T4 = document.querySelector('p4').innerHTML = R4.toPrecision(1);
+
+        
+            var randomColor = Math.floor(Math.random()*16777215).toString(16);
+            ctx.fillStyle = "#" + randomColor;
+            document.querySelector('h1').innerHTML = 'цвет:'+randomColor;
+            ctx.shadowColor = "#" + randomColor;
+            ctx.shadowBlur = 10;
+            ctx.shadowOffsetX = 5
+          ctx.shadowOffsetY = -5;
+    
+           ctx.fillRect(R,R2,R3,R4);
+          // ctx.clearRect(R3,R4,R2,R);
+    
+        };
+      }; 
+
+      function Texting () {
+        //let i; let one = 0; two; three; four; five; six;
+        //for (i=0; i<1 ; i++) {
+        ctx.font = '50px comic-sans';
+        //D = document.querySelector('p5').innerHTML = Math.floor(Math.random()*6)+1;
+        
+        S = Math.random()*1300 //*Multi
+       S2 = Math.random()*500 //*Multi
+       S3 = Math.random()*1300 //*Multi
+       S4 = Math.random()*500 //*Multi
+      
+       //if (D == 1)
+       //{++one};
+        //ctx.strokeText ('...', S, S2, S3, S4);
+        ctx.strokeText('ЭТО ПРЯМОГУЛЬНИК', T1, T2, T3, T4);
+        }
+      ;
+
+
+    function Time () {
+                let i;
+             for (i=0; i<1000; i++)   
+                setTimeout(color, 1000)};
+
+                function Time2 () {
+        let i;
+     for (i=0; i<10000; i++)   
+        setTimeout(color, 1000)};
+
+        function Clear () {ctx.clearRect(0,0,1300,500);}
+
+        function figure () {ctx.beginPath()
+        ctx.strokeStyle = 'blue';
+       ctx.moveTo(100, 300);
+       ctx.lineTo(500, 500);
+       ctx.lineTo(1000, 500);
+       ctx.lineTo(1200, 200);
+       ctx.lineTo(1200, 200);
+       ctx.lineTo(100, 300);
+       ctx.lineTo(100, 300);
+       ctx.lineTo(400, 200);
+       ctx.lineTo(500, 500);
+       ctx.stroke();
+       randomfigure2()}
+
+       function randomfigure () {let i;
+             for (i=0; i<1000; i++) 
+        setTimeout (randomfigure2, 1000);} 
+        
+        function randomfigure2 () {
+        
+        ctx.strokeStyle = 'red';
+        ctx.lineWidth = -5;
+        ctx.lineCap = 'round';
+       Multi = Math.random()*100
+       S = Math.random()*1300 //*Multi
+       S2 = Math.random()*500 //*Multi
+       S3 = Math.random()*1300 //*Multi
+       S4 = Math.random()*500 //*Multi
+      ctx.moveTo(S, S3);
+      ctx.lineTo(S3, S4);
+      ctx.stroke();}
+      
+                   
+                   </script>
+  <p id="p">
+    <a href="../index.html">НАЗАД</a>
+    </p>
+    </body>
+</html>

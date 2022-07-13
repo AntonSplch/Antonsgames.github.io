@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Столбчатая диаграмма</title>
+        <style type="text/css">
+
+            #draw {
+                display: block;
+                border: 1px dotted grey;
+              
+            }
+            #draw2 {
+                display: block;
+                border: 1px dotted grey;
+              
+            }
+          
+        </style>
+       
+      
+       
+
+    </head>
+    <body>
+        <h1>ВОЙНА ПРЯМОУГОЛЬНИКОВ. ОДНО НАЖАТИЕ КЛАВИШИ НА КЛАВИАТУРЕ - 1 БОЙ, левая кнопка мыши - 100 БОЁВ, правая кнопка мыши = 1000 БОЁВ.</h1>
+        <p>КООРДИНАТЫ ПРЯМОУГОЛЬНИКОВ: </p><p1></p1><p2></p2><p3></p3><p4></p4><p5></p5>
+
+        
+        <canvas id="draw" width="1300" height="500"></canvas>
+
+
+        <p>ПОБЕДА КРАСНЫХ: </p>
+
+        <canvas id="draw2" width="1300" height="500"></canvas>
+
+        
+
+        <script>
+            const draw = document.getElementById('draw');
+         
+            const ctx = draw.getContext('2d');
+           
+
+            function red () {
+           
+            const draw2 = document.getElementById('draw2');
+            ctx.fillRect(R,R2,R3,R4); 
+            ctx.fillStyle = "red"};
+         
+
+            draw2.addEventListener('click', red);
+            draw.addEventListener('click', Time);
+            draw.addEventListener('contextmenu', Time2);
+            body = window.document.body;
+            body.addEventListener('keydown', color);
+
+            let count = 0;
+            let count2 = 0;
+
+            function color () {
+            {
+            R = Math.random()*650
+            R2 = Math.random()*650
+            R3 = Math.random()*650
+            R4 = Math.random()*650
+            document.querySelector('p1').innerHTML = R.toPrecision(1);
+            document.querySelector('p2').innerHTML = R2.toPrecision(1);
+            document.querySelector('p3').innerHTML = R3.toPrecision(1);
+            document.querySelector('p4').innerHTML = R4.toPrecision(1);
+
+        
+           ctx.fillRect(R,R2,R3,R4);
+           ctx.clearRect(R3,R4,R2,R);
+          TotalR = R3+R4;
+          TotalC = R2+R;
+
+     
+          if (TotalR > TotalC) 
+          {count++ 
+          //window.alert('blackwins'+count+':'+count2)
+        };
+          if (TotalC > TotalR) 
+         { count2++ 
+         // window.alert('whitewins'+count2+':'+count)
+        };
+    
+    }
+
+    { if (count > count2) 
+          {
+            document.querySelector('h1').innerHTML = 'blackwins'+count+':'+count2};
+            
+          if (count2 > count) {
+          document.querySelector('h1').innerHTML = 'whitewins'+count2+':'+count}
+        
+        };
+      }; 
+
+
+    function Time () {
+                let i;
+             for (i=0; i<100; i++)   
+                setTimeout(color, 1000)}
+
+                function Time2 () {
+        let i;
+     for (i=0; i<1000; i++)   
+        setTimeout(color, 1000)}
+
+        
+                   
+                   
+                   </script>
+
+    </body>
+</html>
