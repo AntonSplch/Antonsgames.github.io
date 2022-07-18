@@ -3,12 +3,12 @@
 <style>
 body {color: black;
   font-family: Verdana, Arial, Helvetica, sans-serif; 
-    font-size: 18pt;
-    text-align: left;}
+    font-size: 15pt;
+    text-align: right;}
 
     #start {position:fixed;
-    top:0; 
-  left:0;}
+    top:50; 
+  left:450;}
 
 .table {
 border-style:padding;
@@ -24,7 +24,7 @@ height:500px;
 
 .alert1 {
       top:0; 
-  left:0;
+  left:10;
   border-color: black; /* Цвет границы */ 
     border-style: solid; /* Стиль границы */  
 position:fixed;
@@ -32,8 +32,8 @@ position:fixed;
     }
 
     .alert2 {
-      top:0; 
-  left:600;
+      top:40; 
+  left:10;
   border-color: black; /* Цвет границы */ 
     border-style: solid; /* Стиль границы */  
 position:fixed;
@@ -41,8 +41,8 @@ position:fixed;
     }
 
     .alert3 {
-      top:50; 
-  left:0;
+      top:80; 
+  left:10;
   border-color: black; /* Цвет границы */ 
     border-style: solid; /* Стиль границы */  
 position:fixed;
@@ -50,8 +50,8 @@ position:fixed;
     }
 
     .alert4 {
-      top:50; 
-  left:600;
+      top:120; 
+  left:10;
   border-color: black; /* Цвет границы */ 
     border-style: solid; /* Стиль границы */  
 position:fixed;
@@ -59,8 +59,8 @@ position:fixed;
     }
 
     .alert5 {
-      top:100; 
-  left:0;
+      top:160; 
+  left:10;
   border-color: black; /* Цвет границы */ 
     border-style: solid; /* Стиль границы */  
 position:fixed;
@@ -68,8 +68,8 @@ position:fixed;
     }
 
     .alert6 {
-      top:100; 
-  left:600;
+      top:200; 
+  left:10;
   border-color: black; /* Цвет границы */ 
     border-style: solid; /* Стиль границы */  
 position:fixed;
@@ -77,8 +77,8 @@ position:fixed;
     }
 
     .alert7 {
-      top:150; 
-  left:0;
+      top:240; 
+  left:10;
   border-color: black; /* Цвет границы */ 
     border-style: solid; /* Стиль границы */  
 position:fixed;
@@ -86,14 +86,21 @@ position:fixed;
     }
 
     .alert0 {
-      top:150; 
-  left:600;
+      top:280; 
+  left:10;
   border-color: black; /* Цвет границы */ 
     border-style: solid; /* Стиль границы */  
 position:fixed;
     color:rgb(68, 0, 255);
     }
    
+    #back {
+      font-size:20px;
+      position:fixed;
+      top:320;
+      left:10px;
+ 
+      }
 
     #wordlist {
       position:relative;
@@ -113,18 +120,22 @@ position:fixed;
 
 </style>
 <head> 
-  <div id="start">
-  <script> window.onload = window.scrollTo(40,60);</script>
   
-  <link href="jquery-ui.css" rel="stylesheet">
+  
   
  <title> 8 случайных слов </title> </head>
 
 <body>
-  <script src="external/jquery/jquery.js"></script>
-  <script src="jquery-ui.js"></script>
-
+  <div id="start">
+  <P >
+    <a href="#" onclick="location.reload(); return false;">
+      TRY MORE  <br>
+    </a>
   
+
+      <a href="../index.html" id="p">GO BACK</a>
+      </p>
+
   <script language="JavaScript">
 
     window.onload = function Done() 
@@ -206,12 +217,23 @@ l=0;
          }
          
          document.body.append(table);      }
+
+         let h4 = document.createElement('p');
+        document.body.append(h4);
+        h4.id="back";
+        h4.innerHTML = "Once apon a time I was a "+ Eng[0]+"!<br> I went to the " + Eng[5] + " and saw there the "+Eng[1]+ "ing " + Eng[2]+"s <br> My dear, " + Eng[7] + "! You are " + Eng[3] + " with me for a long time. <br> So later my " + Eng[0] + "ness will have " + Eng[4]+"ed all of it <br> and I eventually become just "+Eng[6]+"<br>(Random Poet " +rand+")";
+
         }
         
       
+
+      
 </script>
+
 </div>
 
+
+  </script>
 
  <table id="wordlist" class="wordlist">
   <tbody id="wordlist2"><tr><td id="first">1</td><td>abandon</td><td>оставить, забросить</td></tr>
@@ -5224,14 +5246,6 @@ l=0;
 
 
    
-<P>
-  <a href="#" onclick="location.reload(); return false;">
-    ПОПРОБОВАТЬ ЕЩЁ РАЗ
-  </a>
 
-  <p id="p">
-    <a href="../index.html">НАЗАД</a>
-    </p>
-</P>
 </body>
 </html>
