@@ -4,23 +4,32 @@
 body {color: black;
   font-family: Verdana, Arial, Helvetica, sans-serif; 
     font-size: 15pt;
+
     text-align: right;}
 
     #start {position:fixed;
-    top:50; 
-  left:450;}
+    top:400; 
+  left:300;}
 
 .table {
 border-style:padding;
 
-      left:0;
-      right:0;
+}
+
+#left
+{
+cursor:pointer;
+text-align:left;
+border-style:padding;
 }
 
 .iframe {
 width: 1000px;
 height:500px;
 }
+
+#alert {width: 500px;
+  cursor:pointer;}
 
 .alert1 {
       top:0; 
@@ -29,10 +38,11 @@ height:500px;
     border-style: solid; /* Стиль границы */  
 position:fixed;
     color:red;
+ 
     }
 
     .alert2 {
-      top:40; 
+      top:50; 
   left:10;
   border-color: black; /* Цвет границы */ 
     border-style: solid; /* Стиль границы */  
@@ -41,7 +51,7 @@ position:fixed;
     }
 
     .alert3 {
-      top:80; 
+      top:100; 
   left:10;
   border-color: black; /* Цвет границы */ 
     border-style: solid; /* Стиль границы */  
@@ -50,7 +60,7 @@ position:fixed;
     }
 
     .alert4 {
-      top:120; 
+      top:150; 
   left:10;
   border-color: black; /* Цвет границы */ 
     border-style: solid; /* Стиль границы */  
@@ -59,7 +69,7 @@ position:fixed;
     }
 
     .alert5 {
-      top:160; 
+      top:200; 
   left:10;
   border-color: black; /* Цвет границы */ 
     border-style: solid; /* Стиль границы */  
@@ -68,7 +78,7 @@ position:fixed;
     }
 
     .alert6 {
-      top:200; 
+      top:250; 
   left:10;
   border-color: black; /* Цвет границы */ 
     border-style: solid; /* Стиль границы */  
@@ -77,7 +87,7 @@ position:fixed;
     }
 
     .alert7 {
-      top:240; 
+      top:300; 
   left:10;
   border-color: black; /* Цвет границы */ 
     border-style: solid; /* Стиль границы */  
@@ -86,7 +96,16 @@ position:fixed;
     }
 
     .alert0 {
-      top:280; 
+      top:350; 
+  left:10;
+  border-color: black; /* Цвет границы */ 
+    border-style: solid; /* Стиль границы */  
+position:fixed;
+    color:rgb(68, 0, 255);
+    }
+
+    #game {
+      top:450; 
   left:10;
   border-color: black; /* Цвет границы */ 
     border-style: solid; /* Стиль границы */  
@@ -95,11 +114,10 @@ position:fixed;
     }
    
     #back {
-      font-size:20px;
+      font-size:18px;
       position:fixed;
-      top:320;
-      left:10px;
- 
+      top:370;
+    text-align: right;
       }
 
     #wordlist {
@@ -126,6 +144,9 @@ position:fixed;
  <title> 8 случайных слов </title> </head>
 
 <body>
+  <table >  
+  <div id = "game" ><STRONG></SGTRONG></div>
+  </table>
   <div id="start">
   <P >
     <a href="#" onclick="location.reload(); return false;">
@@ -138,36 +159,51 @@ position:fixed;
 
   <script language="JavaScript">
 
-    window.onload = function Done() 
-    {
-    let Eng = [];
+window.alert("у тебя 8 секунд, чтобы запомнить слова!");
+SuperClick='true';
+
+function Game()
+{SuperClick='false';
+Done();}
+
+let Eng = [];
            let Rus = [];
+
+    window.onload = Done;
+    
+    function Done() 
+    {
+   
+        
       
-      
-      
-      
+      game = document.getElementById("game");
+
       function getRandomInRange(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
       }
-/* это функция для случ последовательности           
+// это функция для случ последовательности           
        var random_start = 0; // От какого генерировать
-var random_end = 3; // До какого генерировать
-
-allСycles = 4;
+var random_end = 7; // До какого генерировать
+allСycles = 8;
 
 var arrayX= [];
 var arrayZ=[];
+var arrayX2= [];
+var arrayZ2=[];
+
 
 for(i=random_start;i<=random_end;i++){
  arrayX.push(i);
+ arrayX2.push(i);
+      
 }
 
 for(countCycles=1;countCycles<=allСycles;countCycles++){
-  arrayZ.push(arrayX.splice(Math.random()*arrayX.length,1)[0]);
+  Z = arrayZ.push(arrayX.splice(Math.random()*arrayX.length,1)[0]);
+  Z2 = arrayZ2.push(arrayX2.splice(Math.random()*arrayX.length,1)[0]);
 }
 
-console.log(arrayZ);
-*/
+
       
       for(i=0;i<8;i++) {
          rand = getRandomInRange(0, 5000);
@@ -190,6 +226,7 @@ l=0;
 
          for(j=0;j<2;j++) {
           let table = document.createElement('table');
+          table.id = "away";
          let tr = document.createElement('tr');
          tr.class = "alert";
          document.body.append(tr);
@@ -201,15 +238,17 @@ l=0;
 
          // let a = document.createElement('iframe');
           let td = document.createElement('td');
-         
          td.classList = "alert"+l;
+         td.id="alert";
+      
         // a.classList = "iframe";
          //a.src='https://scrolller.com/'+Eng[l];
          //document.body.append(a);
          document.body.append(td);
-      
+       
         
          td.innerHTML = Eng[l]+" - "+Rus[l];
+        
          
          ///console.log(arrayX[k]);
          l++;
@@ -222,18 +261,149 @@ l=0;
         document.body.append(h4);
         h4.id="back";
         h4.innerHTML = "Once apon a time I was a "+ Eng[0]+"!<br> I went to the " + Eng[5] + " and saw there the "+Eng[1]+ "ing " + Eng[2]+"s <br> My dear, " + Eng[7] + "! You are " + Eng[3] + " with me for a long time. <br> So later my " + Eng[0] + "ness will have " + Eng[4]+"ed all of it <br> and I eventually become just "+Eng[6]+"<br>(Random Poet " +rand+")";
+       
+        
+        if (SuperClick=='true')
+
+        {setTimeout(() => {
+
+          putWords(Eng, Rus, arrayZ, h4);
+
+} ,8000); }
+        
+
 
         }
+
         
+        
+        function putWords (Eng,  Rus, arrayZ, h4)
+        { 
+          game.innerHTML="NOW MATCH WORDS</BR> ПОДБЕРИ СЛОВА ПО ПАРАМ"
+          
+
+          h4.innerHTML = "";
+        
+          for (h=0; h<8; h++) 
+        {
+        //td = body.createElement('h3');
+         //td.class = "h3";
+         //document.body.append(td);
+         
+         allTd = document.getElementsByClassName("alert"+h);
+         allTd[0].innerHTML= "";
+         allTd[0].innerHTML= "<div onclick=changeColor(event)>" + Eng[arrayZ[h]] + "</div>" + "<div id='left' onclick=changeColor(event)> "+Rus[[h]]+" </div>";
       
+         console.log(allTd[0]);
+        // table = document.getElementById("away");
+         //document.removeChild(table);
+         //table.innerHTML = "" + Eng[arrayZ[h]];
+       // h4.style.size = '200%';
+         //h4.innerHTML += "" + Rus[[h]];
+        }
+        }
+        
+        //td = getElementsByTag("td");
+
+      //tds = document.getElementById("alert");
+//console.log(tds);
+     //tds.addEventListener('click', changeColor);
+
+     index1 = -1, index2 = -1, 
+     Green=0;
+     object1=""; object2="";
+     mistakes=0;
+     correct=0;
+  
+        function changeColor(event)
+        { 
+
+         
+        
+          console.log(event.target); 
+          E1 = Eng.indexOf(event.target.innerText);
+          R1 = Rus.indexOf(event.target.innerText);
+          console.log(E1,R1,Green); 
+          if (E1==-1)
+           {
+            firstClick1 = event.target.style;
+          firstClick1.backgroundColor = "green";
+            console.log("RUSSIAN?");
+           index1 = R1;
+           object1 = event.target;
+           Green +=1;
+          }
+            if (R1==-1)
+           {
+          firstClick2 = event.target.style;
+          firstClick2.backgroundColor = "green";
+            object2 = event.target;
+            console.log("ENGLISH?");
+          index2 = E1;
+          
+          Green += 1;
+        }
+            if (index1==index2)
+              {correct++;
+                game.innerHTML="YOU'VE GOT "+mistakes+" MISTAKE(S)<br> and "+correct+" correct answers";
+               setTimeout(() => {
+
+                object1.innerHTML=" ";
+              object2.innerHTML=" ";
+              Green=0;
+
+              } ,100); 
+            
+            }
+            if (Green==2 && index1!==index2)
+            { 
+              mistakes++;
+              game.innerHTML="YOU'VE GOT "+mistakes+" MISTAKE(S)<br> and "+correct+" correct answers";
+              //index1=-1; index2=-1;
+              //event.target.innerHTML.backgroundColor="white";
+              all = document.querySelectorAll('div');
+              i=0;
+             while (i<all.length)
+              {current = all[i];
+                current.style.backgroundColor = "white";
+                i++;}
+              Green=0;
+               
+              //console.log(all); }
+            //object2.innderHTML.backgroundColor="white";
+            //green==false;
+           
+          }
+          
+         // getElementById('back').innerHTML = "YOUR SCORE:";
+
+        }
+         /*
+          
+          if (Rus.indexOf(event.target.innerText)==-1)
+          {index2=Eng.indexOf(event.target.innerText);
+            console.log(index1, index2);
+            event2=event;
+          }
+          if (index1==index2)
+          {console.log(Rus);
+          event.target.innerText="..";
+          event2.target.innerText="..";
+          index1=-1; index2=-1;}
+         else 
+         {index1=-1; index2=-1;
+          event.target.style.backgroundColor="white";
+          event2.target.style.backgroundColor="white"; 
+        */ 
+        
+       
+        
 
       
 </script>
-
 </div>
 
 
-  </script>
 
  <table id="wordlist" class="wordlist">
   <tbody id="wordlist2"><tr><td id="first">1</td><td>abandon</td><td>оставить, забросить</td></tr>
