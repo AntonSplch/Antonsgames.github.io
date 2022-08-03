@@ -4,6 +4,8 @@
         
         <style>
 
+        
+
 * {
   padding: 0;
   margin: 0;
@@ -13,6 +15,7 @@ span {
   display: inline-block;
   opacity: 0;
   filter: blur(4px);
+
 }
 
 span:nth-child(1) {
@@ -57,6 +60,7 @@ span:nth-child(5) {
     font-family:'Courier New', Courier, monospace;
       color: rgb(0, 82, 5);
       text-align: left;
+ 
     }
 
 
@@ -64,36 +68,56 @@ span:nth-child(5) {
 color: #f70000;
 text-decoration: none;
 border-bottom: 3px solid #fa0808;
+
 }
 
 p {
   font-size: 20px;
   text-align: center;
   animation-duration: 1s;
-  animation-name: slidein;}
+  animation-name: slidein;
+
+}
+
+  .hole {
+     position:fixed;
+
+    width:200px;
+    height:200px;
+  }
    
         </style>
         <title>Anton's games</title>
-        <script>
-  
-      </script>
+     
+         <script src="libs/jquery-3.6.0.js"></script>
+         <script>
+         //моё первое использование jQuery 
+         $(document).ready(function(){
+         
+         });</script>
       </head>
     <body>
      
         <table >
+        
           <tr>
-            <td>    <span><img src='./index.jpg' id="img" ><a href=# onclick=aboutMe() id="link">about me</a></span></td><br>
+            <td>  
+          
+              
+              <span><img src='./index.jpg' id="img" ><a href=# onclick=aboutMe() id="link">about me</a></span></td><br>
             <div >
             <td id="table1">
         <span id="info"></span>
         <span> I'll upload here some of my</span>
         <span>JS/PHP/C games and learinig apps.</span>
         <span>Be welcome and explore it!</span>
+      
         </td>
     
     </tr>
   </div>
 </table>
+<img src="hole.png" id="hole" class="hole">
      <div id="div1">
        <p>
              <a href ="./Poetical_Horse/Poetical_Horse.HTML" onclick="sayHi(this)">РЕШИ ШАХМАТНО-ПОЭТИЧEСКУЮ ЗАДАЧКУ О КОНЕ (CHESS GAME IN RUSSIAN)</A>
@@ -131,8 +155,7 @@ p {
 
 
   </div>
-
-
+<div >    </div>
 
 
 
@@ -191,16 +214,28 @@ function sayHi(this1)
  {
 a = this.event;
 a.preventDefault();
-//document.body.style.backgroundColor="black";
-document.getElementById("table1").innerHTML = '';
-div1 = document.getElementById("div1").innerHTML = '';
-//img.src='./index2.jpg';
+//прекрасно работает вместо innerHTML, который я использовал ранее
+$('#table1').hide();
+//а это чтобы сохранялась "матрица"
+$('#div1').html("");
+effect = Math.random()*2;
 
  setInterval( function Go() {
   l+=10;
-//img.style.top=l+'px';
-//img.style.left=l+'px';
 
+  if (effect > 1) 
+{
+ //$('#link').replaceWith('<img src="hole.png" id="hole">');
+ $('#img').replaceWith('<p>IMERGING...</p>');
+ $('#link').remove();
+ //$('#img').remove();
+ $('body').css('background-color', '000000'+l);
+  $('#hole').width(400+l).height(400+l);
+
+}
+
+else 
+{
 img.style.position = "absolute";
 //img.style.display = "none";
 let alf = ["matrix super program coding", "123456789", "russianhackers3000", "007", "qwerty abc", "LOADING"];
@@ -209,6 +244,7 @@ for (d=0;d<6;d++) {
 document.getElementById("div1").style.color = "green";
 document.getElementById("div1").innerHTML += alf[d] + alf[d];
 
+}
 }
 if (l==200)
 {  document.location.href = this1.href;}
@@ -248,6 +284,7 @@ back.style.fontSize = "30px";
 back.innerHTML = "<br/><a href='./index.html'>НАЗАД(GO BACK)</a>";
 document.body.append(back);
 document.getElementById("div1").innerHTML += "<br/>I'm Anton. I'm a teacher of literature<br/> and foreign languages. I like reading and hiking.<br/>";
+$('#hole').hide();
 
 }
 }, 10)
