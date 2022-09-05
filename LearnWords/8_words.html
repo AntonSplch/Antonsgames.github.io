@@ -117,7 +117,7 @@ position:fixed;
       font-size:18px;
       position:fixed;
       top:370;
-    text-align: left;
+    text-align: center;
       }
 
     #wordlist {
@@ -136,38 +136,105 @@ position:fixed;
   margin-top: 20px;
 }
 
+#p3 {top:500;
+  position:fixed;
+  cursor:pointer;
+  border: dotted ;
+}
+
+.hidden {display:none;}
+
+#round2 {left:300;
+  position:fixed;
+  cursor:pointer;
+  border-color: black; /* Цвет границы */ 
+    border-style: solid; /* Стиль границы */  }
+
 </style>
 <head> 
   
   
   
- <title> 8 случайных слов </title> </head>
+ <title> 8 случайных слов </title> 
+ <script src="../libs/jquery-3.6.0.js"></script>
+
+</head>
 
 <body>
   <table >  
+    <div id="round2" class="hidden">
+<P><div id="mainWord"> MEANS...</div></P>
+ <div><p id=var1>...</p></div>
+ <div><p id=var2>...</p></div>
+    </div>
   <div id = "game" ><STRONG></SGTRONG></div>
   </table>
   <div id="start">
+   
   <P >
-    <a href="#" onclick="location.reload(); return false;">
+    <a href="#"  id="p2" onclick="location.reload(); return false;">
       TRY MORE  <br>
     </a>
   
 
       <a href="../index.html" id="p">GO BACK</a>
       </p>
+     
+    </div>
+
+    <p id="p3">LEARN WORDS AND CLICK HERE TO START /</BR> ЗАПОМНИ СЛОВА И НАЖМИ ТУТ, ЧТОБЫ НАЧАТЬ</p>
 
   <script language="JavaScript">
 
-window.alert("у тебя 8 секунд, чтобы запомнить слова!");
-SuperClick='true';
-
-function Game()
-{SuperClick='false';
-Done();}
 
 let Eng = [];
            let Rus = [];
+
+
+
+
+   /**   поработай с массивами по-новому -- проверка, сверка     
+           function Round2(Eng, Rus)
+
+{
+
+$('td').hide();
+$('#mainWord').html(Eng[0]);
+//mainWord = $('#mainWord')[0].innerText;
+//console.log(mainWord);
+//моя первая передача объекта в jquery
+$('#round2').show();
+$('#var1').html(Rus[0]).on({'click': function (event) {           
+       chosen = event.currentTarget.innerHTML;
+       console.log(Rus.indexof(chosen));
+  }});;
+$('#var2').html(Rus[1]);
+
+}
+**/
+
+
+/** совсем ничего не получилось,  кроме передачи массива
+word1 = "<h4 class='alert1' id='main'>"+Eng[0]+"</p>"+"<h3 class='alert2' id='first'>"+Rus[0]+"</p>"+
+"<h3 class='alert3' id='second'>"+Rus[1]+"</p>";
+ $('#away').html(word1);
+ $('h4').on({'click': function (event) { 
+          console.log("start");
+          mainWord = word1[0].innerText;
+          eventPath = event.path[0].innerText;
+          if (mainWord == eventPath)
+
+          {
+          console.log("+");}
+
+          else{console.log("false");}
+        
+
+        }
+ }
+}
+ **/   
+
 
     window.onload = Done;
     
@@ -175,7 +242,7 @@ let Eng = [];
     {
    
         
-      
+    
       game = document.getElementById("game");
 
       function getRandomInRange(min, max) {
@@ -191,16 +258,18 @@ var arrayZ=[];
 var arrayX2= [];
 var arrayZ2=[];
 
-
+//просто массив чисел по порядку
 for(i=random_start;i<=random_end;i++){
  arrayX.push(i);
  arrayX2.push(i);
-      
+         
 }
-
+//вырезаем и добавляем в новые два массива, чтобы создать 2 последовательности
 for(countCycles=1;countCycles<=allСycles;countCycles++){
   Z = arrayZ.push(arrayX.splice(Math.random()*arrayX.length,1)[0]);
   Z2 = arrayZ2.push(arrayX2.splice(Math.random()*arrayX.length,1)[0]);
+ // console.log(arrayZ);
+     /// console.log(arrayZ2);
 }
 
 
@@ -216,12 +285,6 @@ for(countCycles=1;countCycles<=allСycles;countCycles++){
       //console.log(Eng);
          }
         
-         //JSON.stringify(Eng);
-
-        /* You could use JSON.stringify(array) to encode your array in JavaScript, and then use $array=json_decode($_POST['jsondata']); in your PHP script to retrieve it.
-*/
-
-
 l=0;        
 
          for(j=0;j<2;j++) {
@@ -240,7 +303,7 @@ l=0;
           let td = document.createElement('td');
          td.classList = "alert"+l;
          td.id="alert";
-      
+     
         // a.classList = "iframe";
          //a.src='https://scrolller.com/'+Eng[l];
          //document.body.append(a);
@@ -260,29 +323,46 @@ l=0;
          let h4 = document.createElement('p');
         document.body.append(h4);
         h4.id="back";
-        h4.innerHTML = "Once apon a time I was a "+ Eng[0]+"!<br> I went to the " + Eng[5] + " and saw there the "+Eng[1]+ "ing " + Eng[2]+"s <br> My dear, " + Eng[7] + "! You are " + Eng[3] + " with me for a long time. <br> So later my " + Eng[0] + "ness will have " + Eng[4]+"ed all of it <br> and I eventually become just "+Eng[6]+"<br>(Random Poet " +rand+")";
+        h4.innerHTML = "<br>Random  fairytale "+rand+": <br> Once apon a time a "+ Eng[0]+" went to the <br>" + Eng[5] + " and saw there the "+Eng[1]+ "ing " + Eng[2]+"s. So eventually <br> a " +Eng[0]+ " became just a "+Eng[6];
+        //ПЕРЕДАЮ ПЕРЕМЕННЫЕ, ЧТОБЫ ОТКРЫТЬ В  СЛЕД ФУНКЦИИ
+        hide1 = $('#p').hide();
+        hide2 = $('#p2').hide();
+        $("#wordlist").hide();
+        clickToStart = $('#p3').click(function() {putWords(Eng, Rus, arrayZ, h4, hide1, hide2, clickToStart)});
+
+   //идея: сравниваем случайные варианты с основным. проблема повторов без перегрузки массивами??
+ 
+
+
        
-       k=10;
-        if (SuperClick=='true')
-
-        {setTimeout(() => {
-        
-          putWords(Eng, Rus, arrayZ, h4);
-
-} ,10000); }
-        
-
-
-        }
-
         
         
-        function putWords (Eng,  Rus, arrayZ, h4)
+        ;}
+
+       
+    
+ 
+      
+       
+       
+        
+        function putWords (Eng,  Rus, arrayZ, h4, hide1, hide2, clickToStart)
         { 
-          game.innerHTML="NOW MATCH WORDS</BR> ПОДБЕРИ СЛОВА ПО ПАРАМ"
+
+          //тест
+          Round2(Eng,  Rus);
+
+          clickToStart.hide('normal');
           
+          game.innerHTML="<strong>ROUND 1 MATCH WORDS!</BR> ПОДБЕРИ СЛОВА ПО ПАРАМ!</strong>";
+        
 
           h4.innerHTML = "";
+
+      
+   
+
+
         
           for (h=0; h<8; h++) 
         {
@@ -294,13 +374,17 @@ l=0;
          allTd[0].innerHTML= "";
          allTd[0].innerHTML= "<div onclick=changeColor(event)>" + Eng[arrayZ[h]] + "</div>" + "<div id='left' onclick=changeColor(event)> "+Rus[[h]]+" </div>";
       
-         console.log(allTd[0]);
+        // console.log(allTd[0]);
         // table = document.getElementById("away");
          //document.removeChild(table);
          //table.innerHTML = "" + Eng[arrayZ[h]];
        // h4.style.size = '200%';
          //h4.innerHTML += "" + Rus[[h]];
         }
+
+
+
+        
         }
         
         //td = getElementsByTag("td");
@@ -318,14 +402,13 @@ l=0;
         function changeColor(event)
         { 
 
-         
-        
           console.log(event.target); 
           E1 = Eng.indexOf(event.target.innerText);
           R1 = Rus.indexOf(event.target.innerText);
           console.log(E1,R1,Green); 
           if (E1==-1)
            {
+            //это бы в отдельную функцию?? текст inner. а то повтор
             firstClick1 = event.target.style;
           firstClick1.backgroundColor = "green";
             console.log("RUSSIAN?");
@@ -353,6 +436,11 @@ l=0;
               Green=0;
 
               } ,100); 
+
+              if (correct == 8)
+              {
+                Round2(Eng,  Rus);
+            }
             
             }
             if (Green==2 && index1!==index2)
@@ -372,10 +460,17 @@ l=0;
               //console.log(all); }
             //object2.innderHTML.backgroundColor="white";
             //green==false;
+
+            
            
           }
           
+
+
          // getElementById('back').innerHTML = "YOUR SCORE:";
+
+
+
 
         }
          /*
@@ -396,10 +491,15 @@ l=0;
           event2.target.style.backgroundColor="white"; 
         */ 
         
-       
+   
         
+    // не работает никак...
 
-      
+
+    
+
+     
+
 </script>
 </div>
 
