@@ -31,6 +31,16 @@ height:500px;
 #alert {width: 350px;
   cursor:pointer;}
 
+  .Cursor2
+  {cursor:pointer;}
+
+.Pointer {width: 350px;
+  cursor:pointer;
+  font-size: 15px;
+  font-family: fantasy;
+position:fixed;
+color:rgb(54, 32, 94);}
+
 .alert1 {
       top:0; 
   left:10;
@@ -104,20 +114,47 @@ position:fixed;
     color:rgb(68, 0, 255);
     }
 
+    /* это табло информации c моей первой анимацией*/
     #game {
-      top:450; 
-  left:10;
+      top:410; 
+  left:200;
+  font-size: 15px;
   border-color: black; /* Цвет границы */ 
     border-style: solid; /* Стиль границы */  
 position:fixed;
-    color:rgb(68, 0, 255);
+
+    color:rgb(0, 0, 0);
+    animation: colorChange 4.0s steps(2) infinite;     
+}
+
+@keyframes colorChange {
+
+    100% {
+        
+        background-color:rgb(143, 142, 142);
+        
     }
+    
    
+}
+
+
+
+   /* это надпись со "сказкой" */
     #back {
-      font-size:18px;
+      font-size:11px;
+     
+      padding-left:10px;
+      padding-right:10px;
+      margin-right: 10px;
+      margin-left:10px;
+    
+      font-weight: bold;
       position:fixed;
-      top:370;
-    text-align: center;
+      top:360;
+      left:140px;
+      width:220px;
+    text-align: right;
       }
 
     #wordlist {
@@ -138,17 +175,187 @@ position:fixed;
 
 #p3 {top:500;
   position:fixed;
+  
   cursor:pointer;
   border: dotted ;
 }
 
 .hidden {display:none;}
 
-#round2 {left:300;
+#mainWord {background-color: brown;
+font-weight: bold;}
+
+#round2 {left:20;
   position:fixed;
   cursor:pointer;
   border-color: black; /* Цвет границы */ 
     border-style: solid; /* Стиль границы */  }
+
+    #FinalWord  {
+      left:0;
+      top:0;
+      font-size:200%;
+      size:200%; 
+      background-color: brown;
+      border-style:outset;
+      border-radius: 20%;
+      
+    }
+    #Round3Window
+    {font-style:oblique;
+    font-family:Impact, 'Arial Narrow Bold', sans-serif;
+    size: 200%;
+    color:rgb(203, 16, 194);
+   
+      position: absolute;
+     }
+
+     .sprite-container {
+    height: 100vh; /*100% высоты экрана*/
+    display: flex;
+    align-items: center; /*чтобы картинка была по центру*/
+}
+
+.ANGEL {background: url(ANGEL.png) 0px 0px; /*картинка со спрайтами с позицией в верхнем левом углу (0px 0px)*/
+  position:absolute;
+  left:50px;
+top:400px;
+
+}
+
+.ANGELgetsHurt {background: url(ANGELgetsHurt.png) -30px 0px;
+  height: 120px; /*высота спрайта (высота одного кадра)*/
+    width: 100px; 
+  position: static;
+  left:0px;
+} /* по идее можно зарефакторить*/
+
+
+.DEMON {background: url(DEMON.png) 0px 0px;
+  position:absolute;
+  left:200px;
+top:400px;
+
+}
+
+.ANGELhits {background: url(ANGEL.png) -250px 0px;
+  
+}
+
+.DEMONhits {background: url(DEMON.png) -405px 0px;
+  
+}
+
+.DEMONgetsHurt {background: url(DEMON.png) -200px 0px;
+  position: static;
+} /* менять классы - и только */
+
+.DEMONdies {
+  height: 120px; /*высота спрайта (высота одного кадра)*/
+    width: 100px; /*ширина спрайта (ширина одного кадра)*/
+    background: url(demonDefeat.png);
+
+  animation: die 1s steps(9) forwards, /*forwards - последний кадр анимации*/
+        step 1s linear infinite; /*ещё одна анимация, длительностью 15s, линейный, зацикленый*/
+        left: 0;
+
+} 
+
+
+@keyframes die {
+  10% {
+        background-position: 0px; /*ширина картинки со спрайтами*/
+    }
+  20% {
+        background-position: -100px; /*ширина картинки со спрайтами*/
+    }
+  30% {
+        background-position: -200px; /*ширина картинки со спрайтами*/
+    }
+  40% {
+        background-position: -300px; /*ширина картинки со спрайтами*/
+    }
+  60% {
+        background-position: -300px; /*ширина картинки со спрайтами*/
+    }
+  80% {
+        background-position: -400px; /*ширина картинки со спрайтами*/
+    }
+    90% {
+        background-position: -500px; /*ширина картинки со спрайтами*/
+    }
+    100% {
+        background-position: -670px; /*ширина картинки со спрайтами*/
+    }
+}
+
+
+.ANGELdies { height: 120px; /*высота спрайта (высота одного кадра)*/
+    width: 100px; /*ширина спрайта (ширина одного кадра)*/
+    background: url(angelDefeat.png);}
+
+
+
+#ANGEL 
+{position: fixed;
+  left:0px;
+bottom:0px;}
+#DEMON
+{position: fixed;
+  left:100px;
+bottom:0px;}
+
+
+.sprite-image {
+  
+    height: 120px; /*высота спрайта (высота одного кадра)*/
+    width: 100px; /*ширина спрайта (ширина одного кадра)*/
+    
+    animation: play 4.0s steps(2) infinite, /*анимация называется play, скорость анимации 0.8s, нужно сделать 1 шагов (6 кадров), анимация происходит непрерывно (зациклено) - infinite*/
+        step 15s linear infinite; /*ещё одна анимация, длительностью 15s, линейный, зацикленый*/
+   
+    left: 0;
+}
+
+@keyframes play {
+    100% {
+        background-position: -200px; /*ширина картинки со спрайтами*/
+    }
+}
+
+.healthDemon {
+  position:relative;
+  
+  border:3px;
+  border-width: 100%;
+  border-top: 3px;
+  width: 100%;
+  border-style: groove;
+  border-color:blueviolet;
+  background-color: red; 
+}
+
+
+.healthAngel {
+  position:relative;
+  
+  border:3px;
+  border-width: 100%;
+  border-top: 3px;
+  width:100%;
+  border-style: groove;
+  border-color:rgb(212, 8, 8);
+  background-color: red; 
+}
+
+#timer {
+  position:fixed;
+  left:380;
+  top:0;
+  opacity: 0.5;
+
+}
+
 
 </style>
 <head> 
@@ -156,22 +363,50 @@ position:fixed;
   
   
  <title> 8 случайных слов </title> 
+
+ 
+ <script src="../libs/jquery-ui.min.css"></script>
  <script src="../libs/jquery-3.6.0.js"></script>
+ <script src="../libs/jquery-ui.min.js"></script>
+ 
 
 </head>
 
 <body>
+  <div class="timer" id="timer">0</div>
+  <div id='Result' class="Pointer"></div>
+  <div id="Round3Window" title="THE FINAL ROUND"> Now translate the word... <p id='P_Round3'></p>
+    <input type="text" id="FinalWord">
+  </div>
+  <div id="Round2_5"></div>
+ 
   <table >  
     <div id="round2" class="hidden">
-<P><div id="mainWord"> MEANS...</div></P>
- <div><p id=var1>...</p></div>
- <div><p id=var2>...</p></div>
+<P><div id="mainWord">...</div></P>
+ <div><p id=0>...</p></div>
+ <div><p id=1>...</p></div>
+ <div><p id=2>...</p></div>
+ <div><p id=3>...</p></div>
+ <div><p id=4>...</p></div>
+ <div><p id=5>...</p></div>
+ <div><p id=6>...</p></div>
+ <div><p id=7>...</p></div> 
     </div>
   <div id = "game" ><STRONG></SGTRONG></div>
   </table>
+
+  <div class="sprite-container">
+  <p> <div id="ANGEL" class="ANGEL sprite-image"><div class="healthAngel"></div></div></p>
+    <p><div id="DEMON" class="DEMON sprite-image"><div class="healthDemon"></div></div></p>
+     
+   
+  </div>
+    
+  
+
   <div id="start">
    
-  <P >
+  <p >
     <a href="#"  id="p2" onclick="location.reload(); return false;">
       TRY MORE  <br>
     </a>
@@ -186,6 +421,34 @@ position:fixed;
 
   <script language="JavaScript">
 
+//создаю объект настроек. потом добавить конструктор!
+const settings = {
+  name: '',
+  level: '',
+  dictionary: '',
+  timer: false,
+  Eng: [],
+  Rus: [],
+  recordMistakes: [],
+  score: '',
+  timer: function () {
+    ++seconds;
+ document.getElementById("timer").innerHTML = seconds + 'sec.';
+},
+  
+  //как работает эта математика?
+};
+
+
+
+// глобальные переменные
+seconds = 0;
+settings.finalCount = false;
+totalResult = "";
+
+function getRandom(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
 
 let Eng = [];
            let Rus = [];
@@ -193,56 +456,304 @@ let Eng = [];
 
 
 
-   /**   поработай с массивами по-новому -- проверка, сверка     
-           function Round2(Eng, Rus)
+     
+    // передай счётчик ошибок     
+           function Round2(Eng, Rus, correct, mistakes, game)
 
 {
 
+/*  $('#mainWord').show().html("ПЕРЕТАЩИ! MATCH!");
+
+  matches = 0;
+for(j=0;j<3; j++)
+{
+  
+  dop = j + 4;
+  
+  //функиц snap: function ... CSS со случайными координатами j выполняет роль разграничителя для пар ответов
+  $('#'+j).html(Eng[j]).addClass('alert'+j).css('top', '' + getRandom(1,200)).css('left', '' + getRandom(1,300)).draggable({cursor: 'crosshair', opacity: 0.5, snap: 'true', snap : '#'+dop, snapMode:'both', snapTolerance: 10, zIndex: 1000});
+  $('#'+j).droppable({accept: '#'+dop,
+drop: function (event, ui) {
+
+window.alert(matches++)
+this.hide();
+
+
+}
+});
+
+$('#'+dop).draggable(
+
+  {cursor: 'crosshair', opacity: 0.5, snap: 'true', snap : '#'+j, snapMode:'both', snapTolerance: 10, zIndex: 1000}
+
+).html(Rus[j]).addClass('alert'+dop).css('left', '' + getRandom(1,300)).css('top', '' + getRandom(1,200)).droppable({accept: '#'+j,
+drop: function (event, ui) {
+window.alert(matches++)
+this.hide();
+}
+});
+/*
+$('#'+j+4).html(Rus[j]).draggable({cursor: 'crosshair', opacity: 0.5, snap: 'true', snap : '#'+j, snapMode:'both', snapTolerance: 10, zIndex: 100})
+.droppable({accept: '#'+j,
+drop: function (event, ui) {
+alert ('Т овар д о б а в л е н 2');
+}
+}); 
+
+}
+*/
+/*.dropable({accept: '#mainWord',
+drop: function (event, ui) {
+
+alert ('Т овар д о б а в л е н ');
+}
+}); 
+*/
+
+
+
+//ну не всё должно исчезать ?!!
 $('td').hide();
-$('#mainWord').html(Eng[0]);
-//mainWord = $('#mainWord')[0].innerText;
-//console.log(mainWord);
-//моя первая передача объекта в jquery
+$('#game').show();
+$('#Round2_5').hide('slow');
+$("#firstA").hide('slow');
+$("#secondA").hide('slow');
+//забыл скобки после random, а это же метод
+let randOrder = Math.floor(Math.random() * 8);
+console.log(randOrder); 
+//задаём  слово для угадывания (1-8)
+//тест
+  //тест
+        //Round3(Eng,  Rus, correct, mistakes, game);
 $('#round2').show();
-$('#var1').html(Rus[0]).on({'click': function (event) {           
-       chosen = event.currentTarget.innerHTML;
-       console.log(Rus.indexof(chosen));
-  }});;
-$('#var2').html(Rus[1]);
+$('#mainWord').html(Eng[randOrder]);
+mainWord = $('#mainWord')[0].innerText;
+//моя первая передача объекта в jquery + сверка с нумерацией массива. работает вполне
+
+for (s=0; s<8; s++)
+{
+$('#'+s).html(Rus[s]).on({'click': function (event) {           
+       console.log(event);
+       // switch?
+       if (correct > 15) { Round3(Eng,Rus, correct, mistakes, game)}; 
+       if (event.currentTarget.id == randOrder)
+       {console.log("+"+correct);
+      correct++;
+      Counter(game, mistakes, correct);
+      angelHits(mistakes, correct);
+      // код с повторами ниже - это тест анимаций jquery, в том числе со словом this и callback'ами
+      that = this;
+      $(this).css('backgroundColor','green');
+      setTimeout(function() {
+        $(that).css('backgroundColor','white');}, 500)
+      randOrder = Math.floor(Math.random() * 8);
+      $('#mainWord').fadeOut(200).html(Eng[randOrder]).fadeIn(200)
+      $(that).animate
+      (
+{
+ fontSize:'+=10px',
+}, 500,
+function() {
+  $(that).animate
+      (
+{
+ fontSize:'-=10px',
+}
+      ) 
+  ;}
+      );
+      
+      }
+
+       else 
+      {
+        //settings.recordMistakes(randOrder);
+        console.log("wrong. correcr answer is "+ mainWord +" " +Rus[randOrder]);
+       mistakes++;
+      
+       Counter(game, mistakes, correct);
+      demonHits(mistakes, correct);
+       that = this;
+       $(this).css('backgroundColor','red');
+      setTimeout(function() {
+        $(that).css('backgroundColor','white');}, 500)
+       }
+      
+  }});
+}
+
+// закрыл round 2
+}
+
+function Round2_5(Eng,Rus, correct, mistakes, game)
+
+{
+ //тест
+ //finalAnimaition(correct, mistakes, game);
+  minus = 0;
+  
+  //пример из книги Макфарланда по jquery. здесь я хочу сделать вопрос на два варианта
+
+function Questions(Eng,Rus, correct, mistakes, game, minus) {
+
+   //динамическое присвоение из книги Кантора -- двойка либо тройка
+   rand1 = 1+(rand2 = Math.floor(Math.random()*2)+1);
+  console.log(rand1, rand2);
+
+  $('#Round2_5').html(`<h1><p class="table alert1" id="quest">${Eng[Eng.length-minus-2]} - это...</p><p id="firstA" class="alert3">${Rus[Rus.length-rand1-minus]}</p><p id=secondA class="alert5">${Rus[Rus.length-rand2-minus]}</p><h1>`);
+
+    $("#firstA").click(function() {if(Eng.length-2 == Rus.length-rand1) {++correct; angelHits(mistakes, correct)} else {++mistakes; demonHits(mistakes, correct); 
+      mistakeInWord = Eng.length-minus-2;
+     // settings.recordMistakes(mistakeInWord)
+      ;}
+
+//Counter (game, mistakes, correct); 
+//minus+=1;
+Questions(Eng,Rus, correct, mistakes, game, minus);
+    }).addClass("Cursor2");
+
+$("#secondA").addClass("Cursor2").click(function() {if (Eng.length-2 == Rus.length-rand2) { ++correct &&  angelHits(mistakes, correct)} else  {++mistakes; demonHits(mistakes, correct); 
+  mistakeInWord = Eng.length-minus-2;
+     // settings.recordMistakes(mistakeInWord);
+  } 
+
+
+Questions(Eng,Rus, correct, mistakes, game, minus);
+});
+minus+=1;
+//важен ПОРЯДОК передачи параметров!!! иначе counter не сработает
+Counter (game, mistakes, correct); 
+/*проверяем наличие udentified в словах и сразу открываем следующий раунд, если
+слова закончились IFtrue | IFtrue | последнее
+
+*/
+Rus[Rus.length-rand1-minus] || Rus[Rus.length-rand1-minus] || Round2(Eng,  Rus, correct, mistakes, game); 
+    }
+//перезагрузка вопросов. стоп, почему она в трёх местах?
+  Questions(Eng,Rus, correct, mistakes, game, minus);
+
+
+// 
+
+//function Check(this) {window.alert(this);}
+
+
 
 }
-**/
+
+function Round3(Eng,Rus, correct, mistakes, game)
+{
+
+//тест
 
 
-/** совсем ничего не получилось,  кроме передачи массива
-word1 = "<h4 class='alert1' id='main'>"+Eng[0]+"</p>"+"<h3 class='alert2' id='first'>"+Rus[0]+"</p>"+
-"<h3 class='alert3' id='second'>"+Rus[1]+"</p>";
- $('#away').html(word1);
- $('h4').on({'click': function (event) { 
-          console.log("start");
-          mainWord = word1[0].innerText;
-          eventPath = event.path[0].innerText;
-          if (mainWord == eventPath)
+  $('#P_Round3').show();
+  //наоборот
+   $('#round2').hide();
+  $('#mainWord').hide();
+   // за то, что не вынес генератор чисел отедльно
+   newRandom = Math.floor(Math.random()*10);
+   if (newRandom == 9 || 8) {newRandom = 7};
+   
 
-          {
-          console.log("+");}
-
-          else{console.log("false");}
+ 
+   $('#Round3Window').show().append(Rus[newRandom]);
+   
+   $('#Round3Window').on('keypress',function(e) {
+    if(e.which == 13) {
+        alert('Answer and press "close"');
+       //inner();
         
+    }
+});
 
-        }
- }
+  dialog1 = $('#Round3Window').dialog(
+   
+{
+  close: function inner() {$(this).dialog('close');
+//FinalWord = $('FinalWord');
+// как это будет в jquery
+ var password = document.getElementById("FinalWord");
+ //если пользователь пишет с capslook'ом +  It's called the conditional operator!!! This is a one-line shorthand for an if-else statement
+ if (Boolean(password.value) == false) {Round3(Eng,Rus, correct, mistakes, game);} 
+
+ password.value.toLowerCase() == Eng[newRandom] ? correct+=5 : 
+mistakes+=5;
+//час расплаты!
+
+settings.finalCount=true;
+Counter(game, mistakes, correct);
+
+if (settings.finalCount == true) {
+     if (correct > mistakes)
+    {
+      $(".healthDemon").hide('slow');
+      $("#DEMON").removeClass('sprite-image');
+        $("#DEMON").addClass('DEMONdies');
+        //game.show().html("YOU WON!")
+        totalResult += "DEMONdies";
+        //тест
+      P
+       // break
+    }
+
+    }
+
+    if (settings.finalCount == true) {
+      if (10 < mistakes)
+     {$(".healthAngel").hide('slow');
+      $("#ANGEL").removeClass('sprite-image');
+        $("#ANGEL").addClass('ANGELdies');
+        totalResult += "ANGELdies";
+        //break
+    }
+  }
+
+
+  //clearInterval(myInterval);
+
+let text = "none";
+      if (totalResult == "ANGELdiesDEMONdies" && "DEMONdiesANGELdies")
+      {text = "BLOODY DRAW";}
+      else if (totalResult == "ANGELdies")
+      {text = "YOU LOSE";}
+      else
+      {text= "YOU WIN";}
+     
+    settings.Result.html(
+      totalResult + "</br>" + text + "</br>your mistakes" +
+    settings.recordMistakes + "</br> time in sec:" + seconds + "</br> score:"+ (correct*100 - mistakes*10 - seconds*10) );
+
+
+/* + "  <P><a href='#'  id='p2' onclick='location.reload(); return false;'>TRY MORE  <br> </a> <a href=''../index.html' id='p'>GO BACK</a></p>" */
+
 }
- **/   
 
+}
+//тест 30.11 конец диалогового окна???
+   );
+// append РАБОТАЕТ 
+
+   //if (Boolean(password.value) == false) {Round3(Eng,Rus, correct, mistakes, game);} 
+   //if (parseInt(password.value) == 0) {dialog();} 
+}
+
+//функция Начало Всего
+$('#Round3Window').hide();
+      $('P_Round3').hide();
+    
 
     window.onload = Done;
     
     function Done() 
     {
-   
-        
-    
+
+   //тест
+ 
+   settings.Result = $('#Result');
+
+   //убираю окно финального раунда или надо вставить внутри
+ 
       game = document.getElementById("game");
 
       function getRandomInRange(min, max) {
@@ -331,39 +842,126 @@ l=0;
         clickToStart = $('#p3').click(function() {putWords(Eng, Rus, arrayZ, h4, hide1, hide2, clickToStart)});
 
    //идея: сравниваем случайные варианты с основным. проблема повторов без перегрузки массивами??
+
+   //а это окно для последнего раудна
  
-
-
-       
-        
-        
+     
         ;}
 
        
     
- 
+ //это была хорошая идея, чтобы не дублировать! display of counter
+      function Counter (game, mistakes, correct)
+
+      {
+        //использование обратных кавычек с переменными
+       
+        game.innerHTML= `YOU'VE GOT ${mistakes} MISTAKE(S)<br> and ${correct} correct answers`;
       
+
+      }
+        
+    
+
+
+    /*
+setInterval(function() {
+    $('.Timer').text((new Date - start) / 1000 + " Seconds");
+}, 1000);
+    */
+
+
+    //для каждой 
+    function recordMistakes(choice) {
+    
+    window.alert("записана ошибка"+ Eng[choice]+" - "+Rus[choice]);
+    settings.recordMistakes.push(Eng[choice]+" - "+Rus[choice]);
+    console.log(settings);
+  }
+
+    //correct answer animation + final
+    function angelHits(mistakes, correct)
+    {
+      Demon = $(".healthDemon").css('width');
+       Demon = parseInt(Demon)-correct*3; 
+       console.log(Demon);
+      $(".healthDemon").css('width', Demon);
+      $("#DEMON").addClass('DEMONgetsHurt');
+
+      // test
+     // $("#DEMON").removeClass('sprite-image');
+      //$("#DEMON").addClass('DEMONdies');
+      //
+      $("#ANGEL").addClass('ANGELhits');
+      //анонимная функция внутри?
+      setTimeout(function() 
+      {
+       $("#DEMON").removeClass('DEMONgetsHurt');
+        $("#ANGEL").removeClass('ANGELhits');
+        //$("#ANGEL").removeClass('sprite-image');
+        //$("#ANGEL").addClass('ANGELdies');
+      }, 1000)
+
+ 
+    }
+
+    //wrong answer animation + answer
+    function demonHits(mistakes, correct)
+    {
+       Angel = $(".healthAngel").css('width');
+       Angel = parseInt(Angel) - (mistakes*3); 
+       console.log(Angel);
+      $(".healthAngel").css('width', Angel);
+      //$("#ANGEL").addClass('getsHurt');
+      $("#DEMON").addClass('DEMONhits');
+      $("#ANGEL").addClass('ANGELgetsHurt');
+      $("#ANGEL").removeClass('sprite-image');
+      
+      //анонимная функция внутри?
+      setTimeout(function() 
+      {
+        $("#ANGEL").removeClass('ANGELgetsHurt');
+        $("#DEMON").removeClass('DEMONhits');
+        $("#ANGEL").addClass('sprite-image');
+      
+      }, 1000)
+
+ 
+    }
        
-       
+     function finalText (correct,mistakes,game) {
+     console.log(totalResult);
+     
+    
+
+
+   
+
+  //пробую такую штучку
+ 
+    
+     } 
         
         function putWords (Eng,  Rus, arrayZ, h4, hide1, hide2, clickToStart)
         { 
-
+          //запуск таймера
+          const myInterval = setInterval(settings.timer, 1000);
           //тест
-         // Round2(Eng,  Rus);
+          //Round3();
+          
+      //Round3(Eng,  Rus, correct, mistakes, game);
+      
+        
+        //Round2_5(Eng,  Rus, correct, mistakes, game);
 
           clickToStart.hide('normal');
+         
+          game.innerHTML="<strong>ROUND 1 </br> MATCH WORDS!</BR> ПОДБЕРИ СЛОВА </br> ПО ПАРАМ!</strong>";
+          //$(game).draggable();
           
-          game.innerHTML="<strong>ROUND 1 MATCH WORDS!</BR> ПОДБЕРИ СЛОВА ПО ПАРАМ!</strong>";
-        
 
           h4.innerHTML = "";
-
-      
-   
-
-
-        
+       //динамическое создание таблицы в духе Дронова, не очень получилось...
           for (h=0; h<8; h++) 
         {
         //td = body.createElement('h3');
@@ -393,6 +991,9 @@ l=0;
 //console.log(tds);
      //tds.addEventListener('click', changeColor);
 
+    
+     
+
      index1 = -1, index2 = -1, 
      Green=0;
      object1=""; object2="";
@@ -401,17 +1002,21 @@ l=0;
   
         function changeColor(event)
         { 
-
+           
           console.log(event.target); 
+          //устанавливаем текст, по к-му щёлкнули
           E1 = Eng.indexOf(event.target.innerText);
           R1 = Rus.indexOf(event.target.innerText);
-          console.log(E1,R1,Green); 
+          // по русскому или английскому слову?
+          choice = (E1 > R1) ? E1 : R1;
+          console.log(choice,E1,R1,Green); 
+          // зарядить здесь switch??
           if (E1==-1)
            {
             //это бы в отдельную функцию?? текст inner. а то повтор
             firstClick1 = event.target.style;
           firstClick1.backgroundColor = "green";
-            console.log("RUSSIAN?");
+       
            index1 = R1;
            object1 = event.target;
            Green +=1;
@@ -421,14 +1026,15 @@ l=0;
           firstClick2 = event.target.style;
           firstClick2.backgroundColor = "green";
             object2 = event.target;
-            console.log("ENGLISH?");
+      
           index2 = E1;
           
           Green += 1;
         }
             if (index1==index2)
               {correct++;
-                game.innerHTML="YOU'VE GOT "+mistakes+" MISTAKE(S)<br> and "+correct+" correct answers";
+                Counter(game, mistakes, correct);
+                angelHits(mistakes, correct);
                setTimeout(() => {
 
                 object1.innerHTML=" ";
@@ -439,14 +1045,18 @@ l=0;
 
               if (correct == 8)
               {
-                Round2(Eng,  Rus);
+                //тест
+               //Round2(Eng,  Rus, correct, mistakes, game);
+               Round2_5(Eng,  Rus, correct, mistakes, game);
             }
             
             }
             if (Green==2 && index1!==index2)
             { 
               mistakes++;
-              game.innerHTML="YOU'VE GOT "+mistakes+" MISTAKE(S)<br> and "+correct+" correct answers";
+              Counter(game, mistakes, correct);
+              demonHits(mistakes, correct);
+              //recordMistakes(choice);
               //index1=-1; index2=-1;
               //event.target.innerHTML.backgroundColor="white";
               all = document.querySelectorAll('div');
@@ -464,8 +1074,8 @@ l=0;
             
            
           }
+          //тест
           
-
 
          // getElementById('back').innerHTML = "YOUR SCORE:";
 
