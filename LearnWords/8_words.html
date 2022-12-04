@@ -4,7 +4,10 @@
 body {color: black;
   font-family: Verdana, Arial, Helvetica, sans-serif; 
     font-size: 15pt;
-
+    padding-left: 2px;
+    padding-right: 2px;
+    padding-top: 2px;
+    padding-bottom: 2px;
     text-align: right;}
 
     #start {position:fixed;
@@ -38,8 +41,9 @@ height:500px;
   cursor:pointer;
   font-size: 20px;
   font-family: fantasy;
-position:absolute;    
-
+position:fixed;
+top: 10;    
+left: 10;
 color:rgb(54, 32, 94);}
 
 .alert1 {
@@ -119,7 +123,8 @@ position:fixed;
     #game {
       top:410; 
   left:200;
-  font-size: 15px;
+  width: 140;
+  font-size: 12px;
   border-color: black; /* Цвет границы */ 
     border-style: solid; /* Стиль границы */  
 position:fixed;
@@ -176,7 +181,8 @@ position:fixed;
 
 #p3 {top:500;
   position:fixed;
-  
+  width:300;
+  font-size:13px;
   cursor:pointer;
   border: dotted ;
 }
@@ -347,8 +353,8 @@ bottom:0px;}
 
 #timer {
   position:fixed;
-  left:380;
-  top:0;
+  left:210;
+  top:470;
   opacity: 0.5;
 
 }
@@ -394,7 +400,7 @@ font-size: 60%;
 
   <div id="window" title="THE FINAL ROUND">  <img src="finalQuestion.jpg"></br>
     Now translate the word...<p id="theWord"></p>
-    <P id="answerWord">----ANSWER!----</P>
+    <P id="answerWord">----OK----</P>
     <input type="text" id="SuperWord">
  
   </div>
@@ -685,13 +691,13 @@ function Round3(Eng,Rus, correct, mistakes, game)
 
    settings.finalWindow.show().on('click',function(e) {
     if(e.which == 13) {
-        window.alert('Answer and press "ok"');
+        
         FinishALL(Eng,Rus, correct, mistakes, game);
     }
   });
 
   $("#answerWord").on("click",function() {
-        window.alert('Answer and press "ok"');
+       
         FinishALL(Eng,Rus, correct, mistakes, game);
   }
   );
@@ -735,8 +741,8 @@ function Round3(Eng,Rus, correct, mistakes, game)
 var password = document.getElementById("SuperWord");
  if (Boolean(password.value) == false) {Round3(Eng,Rus, correct, mistakes, game); } 
 
- password.value.toLowerCase() == Eng[newRandom] ? correct+=10 : 
-mistakes+=10;
+ password.value.toLowerCase() == Eng[newRandom] ? correct+=1 : 
+mistakes+=1;
 Counter(game, mistakes, correct);
 
 //$( this ).dialog( "close" );
@@ -783,7 +789,7 @@ settings.finalCount=true;
     settings.Result.html(totalResult + "</br>" + text + "</br>your mistakes:" +
     mistakes + "</br>your right answers:" + correct + "</br> time in sec:" + seconds + "</br> score:"+ (correct*100 - mistakes*10 - seconds*10) );
     //game.html();
- $('#game').html("the game is OVER" + "  <P><a href='#'  id='p2' onclick='location.reload(); return false;'>TRY MORE  <br> </a> <a href=''../index.html' id='p'>GO BACK</a></p>" );
+ $('#game').html("<p>the game is OVER</p>" + "  <P><a href='#'  id='p2' onclick='location.reload(); return false;'>TRY MORE  <br> </a> <a href=''../index.html' id='p'>GO BACK</a></p>" );
 
 
 }
