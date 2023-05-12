@@ -1,382 +1,6 @@
 <html>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-body {color: black;
-  font-family: Verdana, Arial, Helvetica, sans-serif; 
-    font-size: 15pt;
-    padding-left: 2px;
-    padding-right: 2px;
-    padding-top: 2px;
-    padding-bottom: 2px;
-    text-align: right;}
-
-    #start {position:fixed;
-    top:400; 
-  left:300;}
-
-.table {
-border-style:padding;
-
-}
-
-#left
-{
-cursor:pointer;
-text-align:left;
-border-style:padding;
-}
-
-.iframe {
-width: 1000px;
-height:500px;
-}
-
-#alert {width: 350px;
-  cursor:pointer;}
-
-  .Cursor2
-  {cursor:pointer;}
-
-.myResult {width: 350px;
-  cursor:pointer;
-  font-size: 20px;
-  font-family: fantasy;
-position:fixed;
-top: 10;    
-left: 10;
-color:rgb(54, 32, 94);}
-
-.alert1 {
-      top:0; 
-  left:10;
-  border-color: black; /* Цвет границы */ 
-    border-style: solid; /* Стиль границы */  
-position:fixed;
-    color:red;
- 
-    }
-
-    .alert2 {
-      top:50; 
-  left:10;
-  border-color: black; /* Цвет границы */ 
-    border-style: solid; /* Стиль границы */  
-position:fixed;
-    color:rgb(7, 128, 147);
-    }
-
-    .alert3 {
-      top:100; 
-  left:10;
-  border-color: black; /* Цвет границы */ 
-    border-style: solid; /* Стиль границы */  
-position:fixed;
-    color:rgb(0, 0, 0);
-    }
-
-    .alert4 {
-      top:150; 
-  left:10;
-  border-color: black; /* Цвет границы */ 
-    border-style: solid; /* Стиль границы */  
-position:fixed;
-    color:rgb(143, 142, 142);
-    }
-
-    .alert5 {
-      top:200; 
-  left:10;
-  border-color: black; /* Цвет границы */ 
-    border-style: solid; /* Стиль границы */  
-position:fixed;
-    color:rgb(0, 73, 2);
-    }
-
-    .alert6 {
-      top:250; 
-  left:10;
-  border-color: black; /* Цвет границы */ 
-    border-style: solid; /* Стиль границы */  
-position:fixed;
-    color:rgb(203, 16, 194);
-    }
-
-    .alert7 {
-      top:300; 
-  left:10;
-  border-color: black; /* Цвет границы */ 
-    border-style: solid; /* Стиль границы */  
-position:fixed;
-    color:rgb(232, 214, 10);
-    }
-
-    .alert0 {
-      top:350; 
-  left:10;
-  border-color: black; /* Цвет границы */ 
-    border-style: solid; /* Стиль границы */  
-position:fixed;
-    color:rgb(68, 0, 255);
-    }
-
-    /* это табло информации c моей первой анимацией*/
-    #game {
-      top:410; 
-  left:200;
-  width: 140;
-  font-size: 12px;
-  border-color: black; /* Цвет границы */ 
-    border-style: solid; /* Стиль границы */  
-position:fixed;
-
-    color:rgb(0, 0, 0);
-    animation: colorChange 4.0s steps(2) infinite;     
-}
-
-@keyframes colorChange {
-
-    100% {
-        
-        background-color:rgb(143, 142, 142);
-        
-    }
-    
-   
-}
-
-
-
-   /* это надпись со "сказкой" */
-    #back {
-      font-size:11px;
-     
-      padding-left:10px;
-      padding-right:10px;
-      margin-right: 10px;
-      margin-left:10px;
-    
-      font-weight: bold;
-      position:fixed;
-      top:360;
-      left:140px;
-      width:220px;
-    text-align: right;
-      }
-
-    #wordlist {
-      position:relative;
-      font-size:0px;
-      padding-top:0px;
-      padding-bottom:0px;
-
-       }
-
-#myDIV {
-  width: 100%;
-  padding: 50px 0;
-  text-align: center;
-  background-color: lightblue;
-  margin-top: 20px;
-}
-
-#p3 {top:500;
-  position:fixed;
-  width:300;
-  font-size:13px;
-  cursor:pointer;
-  border: dotted ;
-}
-
-.hidden {display:none;}
-
-#mainWord {background-color: brown;
-font-weight: bold;}
-
-#round2 {left:20;
-  position:fixed;
-  cursor:pointer;
-  border-color: black; /* Цвет границы */ 
-    border-style: solid; /* Стиль границы */  }
-
-    #SuperWord  {
-
- 
-    
-    background-color: rgb(250, 2, 2);
-
-    }
-    #window
-    {font-style:oblique;
-    font-family:Impact, 'Arial Narrow Bold', sans-serif;
-    size: 50%;
-    position: fixed;
-    left:0px;
-     }
-
-     .sprite-container {
-    height: 100vh; /*100% высоты экрана*/
-    display: flex;
-    align-items: center; /*чтобы картинка была по центру*/
-}
-
-.ANGEL {background: url(ANGEL.png) 0px 0px; /*картинка со спрайтами с позицией в верхнем левом углу (0px 0px)*/
-  position:absolute;
-  left:50px;
-top:400px;
-
-}
-
-.ANGELgetsHurt {background: url(ANGELgetsHurt.png) -30px 0px;
-  height: 120px; /*высота спрайта (высота одного кадра)*/
-    width: 100px; 
-  position: static;
-  left:0px;
-} /* по идее можно зарефакторить*/
-
-
-.DEMON {background: url(DEMON.png) 0px 0px;
-  position:absolute;
-  left:200px;
-top:400px;
-
-}
-
-.ANGELhits {background: url(ANGEL.png) -250px 0px;
-  
-}
-
-.DEMONhits {background: url(DEMON.png) -405px 0px;
-  
-}
-
-.DEMONgetsHurt {background: url(DEMON.png) -200px 0px;
-  position: static;
-} /* менять классы - и только */
-
-.DEMONdies {
-  height: 120px; /*высота спрайта (высота одного кадра)*/
-    width: 100px; /*ширина спрайта (ширина одного кадра)*/
-    background: url(demonDefeat.png);
-
-  animation: die 1s steps(9) forwards, /*forwards - последний кадр анимации*/
-        step 1s linear infinite; /*ещё одна анимация, длительностью 15s, линейный, зацикленый*/
-        left: 0;
-
-} 
-
-
-@keyframes die {
-  10% {
-        background-position: 0px; /*ширина картинки со спрайтами*/
-    }
-  20% {
-        background-position: -100px; /*ширина картинки со спрайтами*/
-    }
-  30% {
-        background-position: -200px; /*ширина картинки со спрайтами*/
-    }
-  40% {
-        background-position: -300px; /*ширина картинки со спрайтами*/
-    }
-  60% {
-        background-position: -300px; /*ширина картинки со спрайтами*/
-    }
-  80% {
-        background-position: -400px; /*ширина картинки со спрайтами*/
-    }
-    90% {
-        background-position: -500px; /*ширина картинки со спрайтами*/
-    }
-    100% {
-        background-position: -670px; /*ширина картинки со спрайтами*/
-    }
-}
-
-
-.ANGELdies { height: 120px; /*высота спрайта (высота одного кадра)*/
-    width: 100px; /*ширина спрайта (ширина одного кадра)*/
-    background: url(angelDefeat.png);}
-
-
-
-#ANGEL 
-{position: fixed;
-  left:0px;
-bottom:0px;}
-#DEMON
-{position: fixed;
-  left:100px;
-bottom:0px;}
-
-
-.sprite-image {
-  
-    height: 120px; /*высота спрайта (высота одного кадра)*/
-    width: 100px; /*ширина спрайта (ширина одного кадра)*/
-    
-    animation: play 4.0s steps(2) infinite, /*анимация называется play, скорость анимации 0.8s, нужно сделать 1 шагов (6 кадров), анимация происходит непрерывно (зациклено) - infinite*/
-        step 15s linear infinite; /*ещё одна анимация, длительностью 15s, линейный, зацикленый*/
-   
-    left: 0;
-}
-
-@keyframes play {
-    100% {
-        background-position: -200px; /*ширина картинки со спрайтами*/
-    }
-}
-
-.healthDemon {
-  position:relative;
-  
-  border:3px;
-  border-width: 100%;
-  border-top: 3px;
-  width: 100%;
-  border-style: groove;
-  border-color:blueviolet;
-  background-color: red; 
-}
-
-
-.healthAngel {
-  position:relative;
-  
-  border:3px;
-  border-width: 100%;
-  border-top: 3px;
-  width:100%;
-  border-style: groove;
-  border-color:rgb(212, 8, 8);
-  background-color: red; 
-}
-
-#timer {
-  position:fixed;
-  left:210;
-  top:470;
-  opacity: 0.5;
-
-}
-
-.ui-dialog-titlebar-close {
-    visibility: hidden;
-}
-
-#Round2_5 {
-font-size: 60%;
-}
-
-#answerWord
-{
-  border:3px;
-  border-width: 100%;
-  border-top: 3px;
-  width:100%;
-  border-style: groove;
-  border-color:rgb(212, 8, 8);
-  cursor:pointer; 
-}
 
 </style>
 <head> 
@@ -385,29 +9,66 @@ font-size: 60%;
   
  <title> 8 случайных слов </title> 
 
- 
- <script src="../libs/jquery-ui.min.css"></script>
+ <link rel="stylesheet" href="8_words.css">
  <script src="../libs/jquery-3.6.0.js"></script>
  <script src="../libs/jquery-ui.min.js"></script>
- 
+ <script src="../libs/jquery-ui.min.css"></script>
+
+
 
 </head>
 
 <body>
+  <h1><p></p><div id="LOAD">  </div></p></h1>
+<div id="settings"></div>
+<!---- action= "process.php" method="post" ---> 
+<div id = "Window1" >  
+<form 
+  name= "signup" >
+  <div>
+  <label fоr="username" class="label">YOUR NAME</label>
+  <input name="username" type="text" id="username" size="36" value="player">
+  </div>
+  <div>
+  <label for="planet" сlass="lаbеl">ЯЗЫК (LANGUAGE)</label>
+  <select name="planet" id="dictionary">
+  <option>RUSSIAN-ENGLISH DICTIONARY 5000 WORDS</option>
+  <option>LATIN</option>
+  <option>РУССКИЙ ЯЗЫК: ЧАСТИ РЕЧИ</option>
+  <option> РУССКИЙ ЯЗЫК: СРЕДСТВА ВЫРАЗИТЕЛЬНОСТИ </option>
+  </select>
+<p></p>
+  <input type="submit" name="submit" id="submit" ^
+  value="Отправить">
+  </div>
+  <div><details>Dolorem ipsum<summary>Инструкция</summary></details></div>
+</form>
+<!---ЭТОТ КОД ПОДПИСАЛА НАСТЯ-->
+  
+</div></div>
+<div >
+<img src="startAngel.jpg" id="startAngel">
+</br>
+<span id="angelSays"></span>
+</div>
+<div >
+<img src="startDemon.jpg" id="startDemon">
+</br>
+<span id="demonSays"></span>
+</div>
+
+
   <div class="timer" id="timer">0 sec</div>
  
   <div id='Result' class="MyResult"></div>
 
   <div id="window" title="THE FINAL ROUND">  <img src="finalQuestion.jpg"></br>
-    Now translate the word...<p id="theWord"></p>
+    Now TYPE (напечатайте) the answer...<p id="theWord"></p>
     <P id="answerWord">----OK----</P>
-    <input type="text" id="SuperWord">
+   <div id="finalInput"> <input type="text" id="SuperWord"></div>
  
   </div>
   
- 
-
-
   <div id="Round2_5"></div>
  
   <table >  
@@ -447,7 +108,9 @@ font-size: 60%;
      
     </div>
 
-    <p id="p3">LEARN WORDS AND CLICK HERE TO START /</BR> ЗАПОМНИ СЛОВА И НАЖМИ ТУТ, ЧТОБЫ НАЧАТЬ</p>
+    <p id="p3" class="Cursor2">LEARN WORDS AND  CLICK HERE TO START /</BR> ЗАПОМНИ СЛОВА И НАЖМИ ТУТ, ЧТОБЫ НАЧАТЬ</p>
+
+    
 
   <script language="JavaScript">
 
@@ -459,12 +122,13 @@ font-size: 60%;
 const settings = {
   name: '',
   level: '',
-  dictionary: '',
+  DICT: '',
+  score: '',
   timer: false,
   Eng: [],
   Rus: [],
   recordMistakes: [],
-  score: '',
+  partsOfSpeech_edited: [],
   timer: function () {
     ++seconds;
  document.getElementById("timer").innerHTML = seconds + 'sec.';
@@ -472,6 +136,80 @@ const settings = {
   
   //как работает эта математика?
 };
+// спец объект для задания
+partsOfSpeech = 
+  `СОЧИНИТЕЛЬНЫЕ СОЮЗЫ: и, да (= и), не только … но и, также, тоже, и…и, ни…ни, как…так и; сколько... столько и,  или, или…или, либо, либо…либо, то…то, то ли…то ли, не то…не то, а, но, да (= но), зато, же, однако, однако же, все же,  не только… но и; не то чтобы…а, не столько…сколько,  тоже, также, да и, притом, причем,  а именно, то есть, или (= то есть)
+
+ПОДЧИНИТЕЛЬНЫЕ СОЮЗЫ: что, чтобы, как, когда, лишь, едва, где, куда, откуда, столько, настолько, так, до такой степени, до того, как, как будто, словно, будто, точно, как бы, так как, потому что, если, если бы, коли, ежели, если … то, несмотря на то, что, хотя, хоть, пускай, чтобы, дабы, с тем чтобы, так что
+
+ЧАСТИЦЫ: не, ни, вовсе не, далеко не, отнюдь не, нет, неужели, разве, ли (ль), что, что ли, вон, это,
+именно, как раз, прямо, точно, точь-в-точь, только, лишь, исключительно, почти, единственно, -то (я-то), всего, всего-навсего, что за, ну и, как, куда как, даже, же, ни, ведь, уж, все-таки, ну, всё,
+едва ли, вряд ли
+
+МЕСТОИМЕНИЕ: я, ты, он, она, оно, мы, вы, они,  мой, твой, наш, ваш, его, ее, их, это, те, этот, таков, тот, столько, сей, оный,  кто, что, какой, каков, сколько, чей, чем, кому, кого, сам, самый, весь, всякий, каждый, иной, любой, другой, всяк, всяческий, некто, нечто, некоторый, некий, кто-то, кое-кто  никто, ничто, никакой, ничей, ничего
+
+НАРЕЧИЕ: так, по-летнему, по-товарищески, весело, громко, вдвоемочень, чересчур, втрое, вдоволь, чуть-чуть, немного, вперед, издали, справа, вдалеке, здесь, куда-то, сегодня, ночью, давно, сейчас, послезавтра, всегда, тогда, потому, сгоряча, поневоле, назло, нарочно, затем, назло, наперекор, специально
+
+ВВОДНОЕ СЛОВО: К счастью, к несчастью, к ужасу, к стыду, на беду, Может, может быть, по-видимому, по сути, кажется, казалось бы, бесспорно, правда, надо полагать, по сути, безусловно, Итак, следовательно, к слову сказать, во-первых, во-вторых, с другой стороны, к примеру, главное, таким образом, кстати, значит, наоборот, По слухам, говорят, по мнению кого-либо, на мой взгляд, по-моему, по преданию, помнится, сообщают, передают, Другими словами, иными словами, попросту сказать, мягко выражаясь, одним словом, Знаешь (ли), знаете (ли), пойми, извините, простите, послушайте, поверьте, согласитесь, вообразите , пожалуйста,
+По крайней мере, самое большее, самое меньшее,
+По обыкновению, бывает, бывало, случается,
+Сказать по чести, честно говоря, по правде, по совести, смешно сказать,
+
+ПРИЧАСТИЕ: Битый, питый, резан, сделан, сказана, написанная, нарисованные, кошеный, писавший, рубившие, говорящий, колющее, смотрящий, несомый, носимый, побеленный
+
+ДЕЕПРИЧАСТИЕ: Бегая, прыгая, играя, писав, сказав, сыграв, читав, 
+
+ПРИЛАГАТЕЛЬНОЕ: большой, крутой, старших, старыми, гусиное, каменный, карманный, более смелый, чернее, белее
+
+СУЩЕСТВИТЕЛЬНОЕ: Дом, столом, машиной, кино, студенты, в школе, о дороге, собака
+
+ПРЕДЛОГ: В, на, о, под, за, через, с, вследствие, в течение, из-за, по, навстречу, несмотря на 
+
+ГЛАГОЛ: Играл, учусь, буду работать, узнал, курит, видим, объсняете, смотри, говорю`
+;
+
+wordsOfExpression = 
+
+`Эпитет: золотая роща, весёлый ветер
+
+Сравнение: И берёзы стоят / как большие свечки, великолепными коврами снег лежит, небо словно море
+
+Метафора: Ситец неба голубой, море работы, крылатость души, Тайсон с алиэкспресса 
+
+Олицетворение: Спит черёмуха в белой накидке, Отговорила роща золотая, Забормотал спросонок гром
+
+Гипербола: Двести лет тебя не видел, В сто сорок солнц закат пылал
+
+Литота: Подожди 5 секунд, ваш шпиц не более наперстка!
+
+Фразеологизмы: зарыть талант в землю, бить баклуши, пришли деньги, жить душа в душу
+
+Ирония: Ты всё пела? Это дело
+
+Инверсия: Тебя мы ждали долго, мастер Йода писал текст этот
+
+Риторический вопрос: Кто ж не сможет его догнать?, О чем задумалась, берёза?
+
+Риторическое обращение: О Море! Как же я скучал!
+
+параллелизм: прощение — сила. прощать — благородство, летал сокол по небу/гулял молодец по свету
+
+Градация: Тишина накрывала/наваливалась/поглощала
+
+Антитеза: Волос длинный--ум короткий
+
+Анафора: Берегите друг/друга Берегите...
+
+Эпифора: Лес не тот! Куст не тот!
+
+Парцелляция:Зашёл человек.В кожаной куртке., Я! ИДУ! СЮДА!
+
+Формы речи: диалог, полилог, монолог
+
+Авторские знаки препинания: Да — вот что — возвращайся…,  Мать – не плакала
+`
+
+
 
 settings.finalWindow = $('#window');
 settings.finalWindow.hide();
@@ -658,6 +396,7 @@ $("#secondA").addClass("Cursor2").click(function() {if (Eng.length-2 == Rus.leng
 Questions(Eng,Rus, correct, mistakes, game, minus);
 });
 minus+=1;
+//minus+=Math.floor(Math.random()*2);
 //важен ПОРЯДОК передачи параметров!!! иначе counter не сработает
 Counter (game, mistakes, correct); 
 /*проверяем наличие udentified в словах и сразу открываем следующий раунд, если
@@ -689,28 +428,48 @@ function Round3(Eng,Rus, correct, mistakes, game)
    // за то, что не вынес генератор чисел отедльно
    
 
-   settings.finalWindow.show().on('click',function(e) {
-    if(e.which == 13) {
-        
-        FinishALL(Eng,Rus, correct, mistakes, game);
-    }
-  });
-
-  $("#answerWord").on("click",function() {
-       
-        FinishALL(Eng,Rus, correct, mistakes, game);
-  }
-  );
+   settings.finalWindow.show();
+   var password = document.getElementById("SuperWord");
 
    newRandom = Math.floor(Math.random()*10);
    if (newRandom == 9 || 8) {newRandom = 7};
    
    //проблема
-   settings.finalWindow.append('</br>'+Rus[newRandom]);
+ // settings.finalWindow.prepend('</br><p>'+Rus[newRandom]+'</p>');
+ $('#answerWord').html(Rus[newRandom]+' -press OK, when typed-');
+
+   /*document.on('keypress',function(e) {
+    window.alert(e);
+    if(e.which == 13) {
+      if (Boolean(password.value) == false) {
+      window.alert("ENTER the TRANSLATION");
+      //game.append("ENTER the TRANSLATION PLEASE");
+      
+     
+     } 
+     else
+        {FinishALL(Eng,Rus, correct, mistakes, game);}
+    }
+  });
+*/
+  settings.finalWindow.on("click",function() {
+    if (Boolean(password.value) == false) {
+      //window.alert("ВВЕДИТЕ ОТВЕТ//ENTER the TRANSLATION");
+      // тест эксперимент
+      game.innerHTML = "<p class='big'>ВВЕДИТЕ ПЕРЕВОД<BR>ENTER TRANS-<BR>LATION<p>";
+      
+     } 
+     else
+     { 
+      FinishALL(Eng,Rus, correct, mistakes, game);}
+  }
+  );
+
+   
    //settings.finalWindow.click(FinishALL(Eng,Rus, correct, mistakes, game));
  
    //settings.finalWindow.$('#theWord').html('</br>'+Rus[newRandom]+"</br>OK");
-   var password = document.getElementById("SuperWord");
+   
 
   
  // $('#answerWord').click(FinishALL(Eng,Rus, correct, mistakes, game));
@@ -739,11 +498,17 @@ function Round3(Eng,Rus, correct, mistakes, game)
   settings.finalWindow.hide();
   clearInterval(settings.myInterval);
 var password = document.getElementById("SuperWord");
- if (Boolean(password.value) == false) {Round3(Eng,Rus, correct, mistakes, game); } 
+//тест на понижение размера букв!! эксп
 
- password.value.toLowerCase() == Eng[newRandom] ? correct+=1 : 
-mistakes+=1;
-Counter(game, mistakes, correct);
+ if (password.value.toLowerCase().trim() == Eng[newRandom].toLowerCase()) 
+ {
+  correct = correct + 1;
+ Counter(game, mistakes, correct);
+ }
+ else {mistakes = mistakes + 1;
+  Counter(game, mistakes, correct);}
+ yourFinalAnswer = Eng[newRandom] + " -- " + Rus[newRandom] + "!";
+
 
 //$( this ).dialog( "close" );
 
@@ -760,6 +525,7 @@ settings.finalCount=true;
       $(".healthDemon").hide('slow');
       $("#DEMON").removeClass('sprite-image');
         $("#DEMON").addClass('DEMONdies');
+        
         //game.show().html("YOU WON!")
         totalResult += "DEMONdies";
         //тест
@@ -769,6 +535,7 @@ settings.finalCount=true;
 
       if (10 < mistakes)
      {$(".healthAngel").hide('slow');
+     
       $("#ANGEL").removeClass('sprite-image');
         $("#ANGEL").addClass('ANGELdies');
         totalResult += "ANGELdies";
@@ -779,17 +546,23 @@ settings.finalCount=true;
 
   
   let text = "none";
-      if (totalResult == "ANGELdiesDEMONdies" && "DEMONdiesANGELdies")
+      if (totalResult === "DEMONdiesANGELdies")
       {text = "BLOODY DRAW";}
       else if (totalResult == "ANGELdies")
-      {text = "YOU LOSE";}
+      {text = "YOU LOSE";
+      $( "body" ).prepend( "<img src='startDemon.jpg' class='zeroCord'>" );}
       else
-      {text= "YOU WIN";}
+      {text= "YOU WIN";
+      $( "body" ).prepend( "<img src='startAngel.jpg' class='zeroCord'>" );
+    }
      
-    settings.Result.html(totalResult + "</br>" + text + "</br>your mistakes:" +
-    mistakes + "</br>your right answers:" + correct + "</br> time in sec:" + seconds + "</br> score:"+ (correct*100 - mistakes*10 - seconds*10) );
+    settings.Result.html(yourFinalAnswer + "</br>" + totalResult + "</br>" + text + "</br>your mistakes:" +
+    mistakes + "</br>your right answers:" + correct + "</br> time in sec:" + seconds + "</br> score:"+ (correct*100 - mistakes*10 - seconds*10));
+    //тест вывода вместо перебора?
+    for (num in Eng)
+    {settings.Result.append(`</br> ${Eng[num]} -- ${Rus[num]}`)} 
     //game.html();
- $('#game').html("<p>the game is OVER</p>" + "  <P><a href='#'  id='p2' onclick='location.reload(); return false;'>TRY MORE  <br> </a> <a href=''../index.html' id='p'>GO BACK</a></p>" );
+ $('#game').html("<p>the game is OVER</p>" + "  <P><a href='#'  id='p2' onclick='location.reload(); return false;'>TRY MORE/TO  <br> </a> <a href=''../index.html' id='p'>GO BACK</a></p>" );
 
 
 }
@@ -816,19 +589,149 @@ settings.finalCount=true;
 }
 
 
-//функция Начало Всего
+//функция Начало Всего -- не подгружаем
 $('#Round3Window').hide();
       $('P_Round3').hide();
-   
+      pannel =  $("#timer, #DEMON, #ANGEL, #game, #start, #p3").hide();
+      pressStart = $('#p3').hide();
+     start = $("#start").hide();
+     playerForm = $("#Window1").hide();
 
-    window.onload = Done;
-    
-    function Done() 
+   window.onload = Done;
+
+    function Done()
     {
 
+   
+     //console.log(partsOfSpeech.split(":"));
+    //Pannel.show();
+   
+  
+      // начинаем с бодрой анимации из jquery
+      //вот тут с задержкой
+      playerForm.delay(4500).fadeIn();
+
+    angelSays =  $('#angelSays').animate(
+{
+left: '100',
+top:'200', 
+width: "300px",
+},
+3000).text("HEY DEMON YOU ARE NEXT!").hide('slow');
+
+demonSays = $('#demonSays').animate(
+{
+left: '50',
+top:'350', 
+width: "300px",
+},
+3000).text("Mastermind! I AM CLOSING IN FOR A KILL!").hide('slow');
+
+
+
+
+      $("#startAngel").animate(
+{
+
+left: '0', 
+//top: '300px',
+
+//width: "50px",
+opacity: .7, 
+textAlign: 'left',
+},
+2000 
+).animate(
+{
+//left: '0рх', 
+//width: "80px",
+//opacity: .5, 
+top:100,
+textAlign: 'left',
+},
+2000 
+).toggle( "bounce", { times: 3 }, "slow" );
+//ах эти старые сладкие эффекты
+
+$("#startDemon").animate(
+{
+//top: '700', 
+left: '100px',
+//width: "400px",
+opacity: .5, 
+//textAlign: 'left',
+//color: 'red',
+
+},
+1000 
+)
+//
+.animate(
+{
+left: '100', 
+top: '350',
+//width: "200px",
+//opacity: .7, 
+//textAlign: 'left',
+},
+3000 
+).toggle( "pulsate" ).hide('1000s');
+
+
+//$( "body" ).css( "backgroundImage", "red");
+//delay(1000).queue(function(n) {
+   //$(this).css( "backgroundColor", "white"); 
+//}));
+
+//$('body').animate(
+ // {backgroundColor: "black",
+//},
+//5000
+//);
+
+
+
+     //Window1 = $("#Window1").dialog(
+    //  'close'
+   //{
+    //modal: true,
+    //show: 1000,
+    //position: 'right center',
+    //autoOpen: false
+  //}
+  //);
+  
+
+
+  $("#Window1").submit(function(e) 
+  { 
+    e.preventDefault();
+    //фишка из jquery с val и сохраняем в объект данные
+    settings.name = $("#username").val();
+   // settings.level = $("#level").val();
+    settings.DICT = $("#dictionary").val();
+    console.log(settings);
+    $("#Window1").hide();
+    //работает... а Prevent default?
+    Done2();
+    return false;
+   
+  
+  }
+    );
+  
+    }
+    
+    function Done2() 
+    {
+     /// тест
+     //Round3(Eng,Rus, correct, mistakes, game);
+     // demonSays.show();
+
+  //window.alert("ddd");
 
    //тест
- 
+   pannel.show();
    settings.Result = $('#Result');
 
 
@@ -864,7 +767,10 @@ for(countCycles=1;countCycles<=allСycles;countCycles++){
 }
 
 
-      
+// ВЫБОР СЛОВАРЯ (вывести в отдельную функцию??)
+switch(settings.DICT) {
+case "RUSSIAN-ENGLISH DICTIONARY 5000 WORDS":
+      {
       for(i=0;i<8;i++) {
          rand = getRandomInRange(0, 5000);
          table = document.getElementById("wordlist2");
@@ -875,7 +781,112 @@ for(countCycles=1;countCycles<=allСycles;countCycles++){
       //console.log(Rus);
       //console.log(Eng);
          }
-        
+         break
+      }
+   
+
+//теперь из этого всего можно создать объект для использования?? }
+    case "LATIN":
+{
+  for(i=0;i<8;i++) {
+         rand = getRandomInRange(10, 180);
+         table = $("ol#wordlist3 li p");
+        // if (table[rand].innerText != 0)
+        //child=[];
+        child2 = table[rand].innerText;
+        //три типа тире? -1 как false ЗАМЕНИТЬ на одно тире
+        if (child2.indexOf('-') > -1)
+{
+  child2 = child2.split('-');
+}
+if (child2.indexOf('–') > -1)
+{
+  child2 = child2.split('–');
+}      
+if (child2.indexOf('—') > -1)
+{
+  child2 = child2.split('—');
+}                  
+      //сравнение фейлилось из-за пробелов. я потратил целый час, чтобы верно подчистить их через trim, зато вспомнил, как работает код
+      Eng.push(child2[0].trim());
+      
+     if (child2[2]) 
+     { 
+     Rus.push(child2[1].trim()+child2[2].trim());}
+     else Rus.push(child2[1].trim());
+     
+//Rus.forEach(element => element.trim());
+//Eng.forEach(element => element.trim());
+//Eng[0].trim();
+//Rus[0].trim();
+      console.log(Eng);
+     console.log(child2);
+      console.log(Rus);
+         }
+         break
+}
+
+   
+        // тест -- моя обработка не работает... была проблема с || в условии
+      case "РУССКИЙ ЯЗЫК: ЧАСТИ РЕЧИ":
+      { cutTheList = partsOfSpeech.split('\n\n');
+    fromTable();
+  break}
+      case "РУССКИЙ ЯЗЫК: СРЕДСТВА ВЫРАЗИТЕЛЬНОСТИ":
+       {cutTheList = wordsOfExpression.split('\n\n');
+      fromTable();
+      break;
+      }
+function fromTable() {
+  for (l=0; l<cutTheList.length; l++)
+{ cutTheList[l] = cutTheList[l].split(':');
+
+cutTheList[l][1] = cutTheList[l][1].split(',');
+} 
+//я считаю кол-во элементов по ключам -- это бред, да?
+c=0;
+for (el in cutTheList)
+{ 
+  totalNumber = el;
+ while (c<8)
+ c++;}
+
+Not_copied = [];
+
+ for(a=0;a<8;a++) {
+
+ choosePartOfSpeech = getRandomInRange(0, totalNumber);
+ ///includeS забыл свою S!!   А тут я исключаю повторы в частях речи
+ if (Not_copied.includes(choosePartOfSpeech) == false)
+ {
+
+  Not_copied.push(choosePartOfSpeech);
+  // ТЕСТ ТЕСТ все ошибки из-за -1???
+ chooseWord = getRandomInRange(0, cutTheList[choosePartOfSpeech][1].length-1);
+ // Eng у меня - это то, что нужно определить в последнем вопросе ПОЧЕМУ ОШИБКА ОТ ПЕРЕМЕНЫ МЕСТ?? TRIM неверный??
+ RusPush = cutTheList[choosePartOfSpeech][1][chooseWord].trim();
+ EngPush = cutTheList[choosePartOfSpeech][0].trim();
+ Eng.push(EngPush);
+ Rus.push(RusPush);
+ }
+ else {a = a - 1;}
+ }
+    
+     //cutTheList = wordsOfExpression.split('\n\n');
+     // cutTheList2 = cutTheList();
+
+ //console.log(cutTheList.map(e));
+   // OF - это сразу ЗНАЧЕНИЕ, а не ключ, как в IN... START here - а как создать ключи???
+// if = needed DICT do funct generate[LENGTH] nuber push to ENG RUS arrays как прим OF IN?
+// мб вывести of IN именно с объектом в качестве результата?
+// может, создать объект
+
+
+      }
+    }
+
+         //тут идёт грубое создание таблицы из Дронова
+
 l=0;        
 
          for(j=0;j<2;j++) {
@@ -914,11 +925,13 @@ l=0;
          let h4 = document.createElement('p');
         document.body.append(h4);
         h4.id="back";
-        h4.innerHTML = "<br>Random  fairytale "+rand+": <br> Once apon a time a "+ Eng[0]+" went to the <br>" + Eng[5] + " and saw there the "+Eng[1]+ "ing " + Eng[2]+"s. So eventually <br> a " +Eng[0]+ " became just a "+Eng[6];
+        h4.innerHTML = "</br></br></br><details><br><summary>Random  fairytale</summary> : <br> Once apon a time a "+ Eng[0]+" went to the <br>" + Eng[5] + " and saw there the "+Eng[1]+ "ing " + Eng[2]+"s. So eventually <br> a " +Eng[0]+ " became just a "+Eng[6] + "</details>";
         //ПЕРЕДАЮ ПЕРЕМЕННЫЕ, ЧТОБЫ ОТКРЫТЬ В  СЛЕД ФУНКЦИИ
         hide1 = $('#p').hide();
         hide2 = $('#p2').hide();
         $("#wordlist").hide();
+        $("#wordlist3").hide();
+        //функция стрелка - тест эксп
         clickToStart = $('#p3').click(function() {putWords(Eng, Rus, arrayZ, h4, hide1, hide2, clickToStart)});
 
    //идея: сравниваем случайные варианты с основным. проблема повторов без перегрузки массивами??
@@ -951,7 +964,7 @@ setInterval(function() {
     */
 
 
-    //для каждой  тест
+    //для каждой  тест пока не разработано
     
     function recordMistakes(choice) {
     
@@ -1013,7 +1026,6 @@ setInterval(function() {
      function finalText (correct,mistakes,game) {
      console.log(totalResult);
      
-    
 
 
    
@@ -1025,6 +1037,8 @@ setInterval(function() {
         
         function putWords (Eng,  Rus, arrayZ, h4, hide1, hide2, clickToStart)
         { 
+          // тест -- 
+          //Round3(Eng,Rus, correct, mistakes, game);
           //settings.finalWindow.show();
           //$("#window").dialog(
   //{
@@ -1053,6 +1067,8 @@ setInterval(function() {
 
           h4.innerHTML = "";
        //динамическое создание таблицы в духе Дронова, не очень получилось...
+       // теперь снизим до 6 тест
+       
           for (h=0; h<8; h++) 
         {
         //td = body.createElement('h3');
@@ -1060,8 +1076,10 @@ setInterval(function() {
          //document.body.append(td);
          
          allTd = document.getElementsByClassName("alert"+h);
-         allTd[0].innerHTML= "";
-         allTd[0].innerHTML= "<div onclick=changeColor(event)>" + Eng[arrayZ[h]] + "</div>" + "<div id='left' onclick=changeColor(event)> "+Rus[[h]]+" </div>";
+         
+         
+         allTd[0].innerHTML= "<div onclick=changeColor(event) class = 'firstRoundwords'>" + Eng[arrayZ[h]] + "</div>" + "<div id='left' onclick=changeColor(event) class = 'firstRoundwords'> "+Rus[[h]]+" </div>";
+        
       
         // console.log(allTd[0]);
         // table = document.getElementById("away");
@@ -1094,7 +1112,7 @@ setInterval(function() {
         function changeColor(event)
         { 
            
-          console.log(event.target); 
+          console.log(event); 
           //устанавливаем текст, по к-му щёлкнули
           E1 = Eng.indexOf(event.target.innerText);
           R1 = Rus.indexOf(event.target.innerText);
@@ -1128,12 +1146,16 @@ setInterval(function() {
                 angelHits(mistakes, correct);
                setTimeout(() => {
 
-                object1.innerHTML=" ";
+              object1.innerHTML=" ";
               object2.innerHTML=" ";
+//TEST эти кликеры мешали МНЕ, создавая ложный набор просто уничтожить их?
+              object1.remove();
+              object2.remove();
+
               Green=0;
 
               } ,100); 
-
+// тест эксперимент с length ДЕЛО БЫЛО В ТАБЛИЧКАХ
               if (correct == 8)
               {
                 //тест
@@ -1204,6 +1226,1248 @@ setInterval(function() {
 </script>
 </div>
 
+
+
+<ol id="wordlist3" class="wordlist">
+  <li>
+<p>
+  <b>Abecendarium
+  </b>-
+  Алфавит, словарь.</p>
+  </li><li>
+<p>
+  <b>Abiens,
+  abi</b>
+  - Уходя, уходи.</p>
+  </li><li>
+<p>
+  <b>Abusus</b><b>
+  </b><b>non</b><b>
+  </b><b>tollit</b><b>
+  </b><b>usum</b>
+  - Злоупотребление не отменяет употребления.</p>
+  </li><li>
+<p>
+  <b>Ab
+  initio</b>
+   – с возникновения, от начала</p>
+  </li><li>
+<p>
+  <b>Ab
+  origine</b>
+   – с самого начала, с азов</p>
+  </li><li>
+<p>
+  <b>Ab</b><b>
+  </b><b>ovo</b><b>
+  </b><b>usque</b><b>
+  </b><b>ad</b><b>
+  </b><b>mala</b>
+  – От начала до конца.</p>
+  </li><li>
+<p>
+  <b>Advocatus
+  Dei</b>
+  - Адвокат бога.  
+  </p>
+  </li><li>
+<p>
+  <b>Advocatus
+  diaboli</b>
+  - Адвокат дьявола.</p>
+  </li><li>
+<p>
+  <b>Ad</b><b>
+  </b><b>exemplum</b>
+   – по образцу; для примера</p>
+  </li><li>
+<p>
+  <b>Ad</b><b>
+  </b><b>usum</b>
+  - Для использования, для употребления.
+  
+  </p>
+  </li><li>
+<p>
+  <b>Ad</b><b>
+  </b><b>usum</b><b>
+  </b><b>externum</b>
+  - Для наружного применения. 
+  </p>
+  </li><li>
+<p>
+  <b>Ad</b><b>
+  </b><b>usum</b><b>
+  </b><b>internum</b><b>
+  </b>-
+  Для внутреннего применения.</p>
+  </li><li>
+<p>
+  <b>Alea
+  jacta est</b>
+  - Жребий брошен; принято бесповоротное
+  решение (Цезарь).</p>
+  </li><li>
+<p>
+  <b>Aliena
+  vitia in oculis habemus, а tergo nostra sunt</b>
+  - Чужие пороки у нас на глазах, наши - за
+  спиной; в чужом глазу соломинку ты
+  видишь, в своем не замечаешь и бревна.</p>
+  </li><li>
+<p>
+  <b>А
+  linea</b>
+  - С новой строки. 
+  </p>
+  </li><li>
+<p>
+  <b>Alibi</b>
+   – в другом месте</p>
+  </li><li>
+<p>
+  <b>Alma
+  mater</b>
+  - Мать-кормилица. 
+  </p>
+  </li><li>
+<p>
+  <b>Altera
+  pars</b>
+  - Другая сторона. 
+  </p>
+  </li><li>
+<p>
+  <b>Alter
+  ego</b>
+  - Мой двойник, другой я - сказано о друге
+  (Пифагор). 
+  </p>
+  </li><li>
+<p>
+  <b>Agnus
+  De</b><b>i</b>
+  - Агнец божий. 
+  </p>
+  </li><li>
+<p>
+  <b>Amat
+  victoria curam</b>.
+  - Победа любит старание.</p>
+  </li><li>
+<p>
+  <b>Amicus
+  Plato, sed magis amica veritas</b>.
+  - Мне дорог Платон, но истина еще дороже.</p>
+  </li><li>
+<p>
+  <b>Amicus
+  cognoscitur amore, more, ore, re</b>
+  - Друг познается по любви, ​нраву, слову,
+  деянию.</p>
+  </li><li>
+<p>
+  <b>Amor
+  caecus</b>
+  — Любовь слепа</p>
+  </li><li>
+<p>
+  <b>Amor
+  vincit omnia</b>
+  - любовь побеждает всё</p>
+  </li><li>
+<p>
+  <b>Anni
+  currentis (</b><b>а</b><b>.
+  </b><b>с</b><b>.).</b>
+  - Сего
+  года.
+  
+  </p>
+  </li><li>
+<p>
+  <b>Anni
+  futuri (а. f</b>.).
+  - Будущего года.</p>
+  </li><li>
+<p>
+  <b>А
+  posteriori</b>.
+  - Исходя из опыта, на основании опыта.</p>
+  </li><li>
+<p>
+  <b>А
+  priori</b>.
+  - Заранее.</p>
+  </li><li>
+<p>
+  <b>Arbor
+  vitae</b>
+   – дерево жизни</p>
+  </li><li>
+<p>
+  <b>Ars</b><b>
+  </b><b>longa</b><b>
+  </b><b>vita</b><b>
+  </b><b>brevis</b><b>
+  </b><b>est</b>
+  - область науки безгранична, а жизнь
+  коротка; искусство долговечно, ​жизнь
+  коротка (Гиппократ)</p>
+  </li><li>
+<p>
+  <b>Audaces
+  fortuna juvat</b>
+   – смелым судьба помогает (Вергилий
+  )</p>
+  </li><li>
+<p>
+  <b>Аurеа
+  mediocritas</b>.
+  – Золотая середина.</p>
+  </li><li>
+<p>
+  <b>Audacia
+  pro muro habetur</b>.
+  - Смелость города берёт.</p>
+  </li><li>
+<p>
+  <b>Aut
+  Сaesаr, aut nihil</b>.
+  - Все, или ничего, или Цезарь, или ничто.</p>
+  </li><li>
+<p>
+  <b>Avis
+  rаrа</b>.
+  - Редкая птица, редкость.</p>
+  </li><li>
+<p>
+  <b>Aquila
+  non captat muscas</b>.
+  - Орел не ловит мух. 
+  </p>
+  </li><li>
+<p>
+  <b>Audi,
+  vide, sile</b>.
+  - Слушай, смотри, молчи. 
+  </p>
+  </li><li>
+<p>
+  <b>Aqua
+  et papis, vita canis…</b>
+  - Хлеб да вода - собачья жизнь...</p>
+  </li><li>
+<p>
+  <b>Ad
+  futuram memoriam</b>.
+  - На
+  долгую
+  память.</p>
+  </li><li>
+<p>
+  <b>Barba</b><b>
+  </b><b>crescit</b><b>,
+  </b><b>caput</b><b>
+  </b><b>nescit</b>.
+  - Борода выросла, а ума нет.</p>
+  </li><li>
+<p>
+  <b>Bis
+  dat, qui cito dat</b>
+   – кто быстро дает, тот дважды даст;
+  вдвойне дает тот, кто даст быстро
+  (Публилий
+  Сир
+  )</p>
+  </li><li>
+<p>
+  <b>Bellum
+  frigidum</b>.
+  - Холодная война.</p>
+  </li><li>
+<p>
+  <b>Bis</b>.
+  - Дважды.</p>
+  </li><li>
+<p>
+  <b>Brevi
+  manu</b>
+   – без проволочек, без формальностей
+  (досл.: короткой рукой)</p>
+  </li><li>
+<p>
+  <b>Caesar
+  ad Rubiconem</b>
+  - Цезарь перед Рубиконом - о человеке,
+  которому предстоит принять важное
+  решение. 
+  </p>
+  </li><li>
+<p>
+  <b>Caesarum
+  citra Rubiconem</b>
+  - Цезарь по ту сторону Рубикона - о
+  человеке, удачно совершившем важнейшее
+  дело. 
+  </p>
+  </li><li>
+<p>
+  <b>Caecus
+  non judicat de colore</b>
+  - Слепой да не судит о цветах.</p>
+  </li><li>
+<p>
+  <b>Caput
+  mundi</b>
+  - глава  мира, центр вселенной; речь идет
+  о Древнем Риме как о столице мировой
+  империи. 
+  </p>
+  </li><li>
+<p>
+  <b>Carissimo
+  amico</b>
+  - дражайшему другу.</p>
+  </li><li>
+<p>
+  <b>Саrре
+  diem</b>
+  - лови день; пользуйся каждым днем; не
+  откладывай на завтра то, что должен
+  сделать сегодня (Гораций)</p>
+  </li><li>
+<p>
+  <b>Casus</b>
+  - случай. 
+  </p>
+  </li><li>
+<p>
+  <b>Casus
+  belli</b>
+  - повод к войне, к конфликту.</p>
+  </li><li>
+<p>
+  <b>Cave!</b>
+  - будь осторожен!</p>
+  </li><li>
+<p>
+  <b>Citius,
+  altius, fortius!</b>
+  - быстрее, выше, сильнее! (девиз Олимпийских
+  игр).</p>
+  </li><li>
+<p>
+  <b>Cogito,
+  ergo sum </b>-
+  я мыслю, следовательно, существую
+  (Декарт
+  )</p>
+  </li><li>
+<p>
+  <b>Cognosce
+  te ipsum</b>
+  <b>-</b>
+  познай самого себя.</p>
+  </li><li>
+<p>
+  <b>Concordia
+  victoriam gignit</b>
+  - согласие порождает победу.</p>
+  </li><li>
+<p>
+  <b>Confer!</b>
+   – смотри! Сравни! (при ссылке в научных
+  работах)</p>
+  </li><li>
+<p>
+  <b>Consuetudo
+  est аlterа natura</b>
+  <b>-</b>
+  привычка - вторая натура.</p>
+  </li><li>
+<p>
+  <b>Credo</b>
+  – верую; исповедание;  символ веры; 
+  убеждение.</p>
+  </li><li>
+<p>
+  <b>Chirurgus
+  curat manu armata</b>
+  - хирург лечит вооруженной рукой.</p>
+  </li><li>
+<p>
+  <b>Curriculum
+  vitae</b>
+   – жизнеописание, краткие сведения о
+  жизни, биография (досл.: бег жизни)</p>
+  </li><li>
+<p>
+  <b>Cum
+  tacent, clamant</b>
+  – Их молчание – громкий крик (Цицерон).</p>
+  </li><li>
+<p>
+  <b>Dum
+  spiro, spero</b>
+  - Пока дышу, надеюсь.</p>
+  </li><li>
+<p>
+  <b>Ex</b><b>
+  nihilo nihil</b>
+  - Ничто не возникает из ничего.</p>
+  </li><li>
+<p>
+  <b>De
+  die in diem</b>
+   – изо дня в день</p>
+  </li><li>
+<p>
+  <b>De
+  (ех) nihilo nihil</b>
+   – из ничего – ничто; ничто не возникает
+  из ничего (Лукреций
+  )</p>
+  </li><li>
+<p>
+  <b>De
+  facto</b>
+  - Фактически, на деле.</p>
+  </li><li>
+<p>
+  <b>Dе
+  jure</b>
+  - Юридически, по праву.</p>
+  </li><li>
+<p>
+  <b>De
+  lingua slulta incommoda multa</b>
+  - Из-за пустых слов бывают большие
+  неприятности. 
+  </p>
+  </li><li>
+<p>
+  <b>De
+  mortuis aut bene aut nihil</b>
+  - Об умерших не злословить.</p>
+  </li><li>
+<p>
+  <b>Deus
+  ех machina</b>
+   – неожиданное вмешательство (доcл.;
+  бог из машины) (Сократ
+  )</p>
+  </li><li>
+<p>
+  <b>Dictum
+  - factum</b>
+  - Сказано - сделано.</p>
+  </li><li>
+<p>
+  <b>Dies
+  diem docet</b>
+  - День день учит.</p>
+  </li><li>
+<p>
+  <b>Divide
+  et impera</b>
+  - Разделяй и властвуй.</p>
+  </li><li>
+<p>
+  <b>Dixi</b>
+  - Сказал, все сказано, добавить нечего.</p>
+  </li><li>
+<p>
+  <b>Do
+  manus</b>
+  - Даю руки, ручаюсь.</p>
+  </li><li>
+<p>
+  <b>Dum
+  docent, discunt</b>
+  - Уча,
+  учатся.</p>
+  </li><li>
+<p>
+  <b>Dum
+  spiro, spero</b>.
+  – Пока дышу, надеюсь. 
+  </p>
+  </li><li>
+<p>
+  <b>Dura</b><b>
+  </b><b>lex</b><b>,
+  </b><b>sed</b><b>
+  </b><b>lex</b>
+  - Закон суров, но это закон; закон есть
+  закон.</p>
+  </li><li>
+<p>
+  <b>Elephantum
+  ех musca facis</b>
+  - делаешь из мухи слона 
+  </p>
+  </li><li>
+<p>
+  <b>Epistula
+  nоn erubescit</b>
+   – бумага не краснеет, бумага все терпит
+  (Цицерон
+  )</p>
+  </li><li>
+<p>
+  <b>Errare
+  humanum est</b>-
+  человеку свойственно ошибаться</p>
+  </li><li>
+<p>
+  <b>Est
+  modus in rebus</b>
+   – всему есть предел; все имеет свою
+  меру (Гораций
+  )</p>
+  </li><li>
+<p>
+  <b>Et
+  cetera (etc.)</b>
+  - и так далее, и прочее</p>
+  </li><li>
+<p>
+   <b>Et</b><b>
+  </b><b>tu</b><b>,
+  </b><b>Brut</b><b>ě!
+  – </b>И
+  ты, Брут! (Цезарь)</p>
+  </li><li>
+<p>
+  <b>Exegi
+  monumentum</b>
+   – воздвиг я памятник себе (Гораций
+  )</p>
+  </li><li>
+<p>
+  <b>Exempli
+  gratia (е. g.)</b>
+  – например</p>
+  </li><li>
+<p>
+  <b>Extra
+  muros</b>
+  – публично</p>
+  </li><li>
+<p>
+   <b>Fabula</b><b>
+  </b><b>facta</b><b>
+  </b><b>est</b>
+  –Дело сделано.</p>
+  </li><li>
+<p>
+   <b>Fama
+  clamosa</b>
+  - Громкая слава. 
+  </p>
+  </li><li>
+<p>
+   <b>Fata
+  volat!</b>
+  - Молва летит.</p>
+  </li><li>
+<p>
+  <b>Festina
+  lente!</b>
+  - Спеши медленно! 
+  </p>
+  </li><li>
+<p>
+   <b>Fiat
+  lux!</b>
+  - Да будет свет!</p>
+  </li><li>
+<p>
+   <b>Folio
+  verso (f. v.)</b>
+  - На следующей странице</p>
+  </li><li>
+<p>
+   <b>Gutta
+  cavat lapidem</b>
+  - капля точит камень (Овидий
+  )</p>
+  </li><li>
+<p>
+   <b>Haurit
+  aquam cribro, qui discere vult sine libro</b>
+  – Тот, кто хочет учиться без книги,
+  черпает воду решетом.</p>
+  </li><li>
+<p>
+   <b>Haud
+  semper errat fama</b>.
+  - Не всегда ошибается молва.</p>
+  </li><li>
+<p>
+  <b>Historia
+  magistra vitae</b>
+  - история - учитель жизни 
+  </p>
+  </li><li>
+<p>
+  <b>Нос
+  est (h. e.)</b>
+  - то есть, это значит</p>
+  </li><li>
+<p>
+  <b>Hoc
+  erat in fatis</b>
+  -  Так было суждено.</p>
+  </li><li>
+<p>
+  <b>Homo
+  homini lupus est</b>
+  - человек человеку волк</p>
+  </li><li>
+<p>
+  <b>Нomо
+  ornat locum, nоn locus hominem</b>
+  - не место красит человека, а человек -
+  место 
+  </p>
+  </li><li>
+<p>
+  <b>Homo
+  sapiens</b>
+  - человек разумный 
+  </p>
+  </li><li>
+<p>
+   <b>Homo
+  sum et nihil humani a me alienum puto</b>-я
+  человек, и ничто человеческое мне не
+  чуждо</p>
+  </li><li>
+<p>
+   <b>In
+  vino veritas</b>
+  – Истина в вине.</p>
+  </li><li>
+<p>
+   <b>Ibi
+  victoria, ubi concordia</b>
+  - там победа, где согласие</p>
+  </li><li>
+<p>
+   <b>Ignorantia
+  non est argumentum</b>
+  - незнание
+  - не
+  ​довод.</p>
+  </li><li>
+<p>
+   <b>Ignis</b><b>,
+  </b><b>mare</b><b>,
+  </b><b>milier</b><b>
+  – </b><b>tria</b><b>
+  </b><b>mala</b>
+  - Огонь, море, женщина – вот 3 несчастья.</p>
+  </li><li>
+<p>
+  <b>Incognito</b>
+  <b>-</b>
+   тайно, скрывая свое настоящее имя</p>
+  </li><li>
+<p>
+  <b>Index</b>
+  - указатель, список 
+  </p>
+  </li><li>
+<p>
+  <b>Index
+  librōrum</b>
+  <b>-</b>
+  список книг</p>
+  </li><li>
+<p>
+  <b>In
+  folio - в целый лист</b>
+  (имеется в виду самый большой формат
+  книги)</p>
+  </li><li>
+<p>
+  <b>Inter
+  caecos, lustus rex</b>
+  <b>-
+  </b>Среди
+  слепых - одноглазый король.</p>
+  </li><li>
+<p>
+  <b>Inter
+  arma tacent musae</b>
+  -
+  Среди оружия молчат музы.</p>
+  </li><li>
+<p>
+  <b>Invia
+  est in medicina via sine lingua latina</b>
+  - непроходим в медицине путь без
+  латинского языка</p>
+  </li><li>
+<p>
+  <b>In
+  vitro</b>
+  - в сосуде, в пробирке 
+  </p>
+  </li><li>
+<p>
+  <b>In
+  vivo</b><b>
+  </b>-
+  на
+  живом организме 
+  </p>
+  </li><li>
+<p>
+  <b>Ipse
+  dixit</b>
+  - "сам сказал" (о непреложном
+  авторитете)</p>
+  </li><li>
+<p>
+  <b>Juris
+  consultus</b>
+  - юрисконсульт.
+  
+  </p>
+  </li><li>
+<p>
+  <b>Jus
+  civile</b>
+  - Гражданское право. 
+  </p>
+  </li><li>
+<p>
+  <b>Jus
+  commune</b>
+  - Общее право. 
+  </p>
+  </li><li>
+<p>
+  <b>Jus
+  criminale</b>
+  - Уголовное право.</p>
+  </li><li>
+<p>
+  <b>Labor
+  corpus firmat</b>
+  - Труд укрепляет тело.</p>
+  </li><li>
+<p>
+  <b>Lapsus</b>
+  - Ошибка, промах.</p>
+  </li><li>
+<p>
+  <b>Littera
+  scripta manet</b>
+  - Написанное остается.</p>
+  </li><li>
+<p>
+  <b>Lupus
+  in fabula</b>
+  - Легок на помине (доcл.: как волк в басне).</p>
+  </li><li>
+<p>
+  <b>Lupus</b><b>
+  </b><b>non</b><b>
+  </b><b>mordet</b><b>
+  </b><b>lupum</b>
+  - Волк не кусает волка. 
+  </p>
+  </li><li>
+<p>
+  <b>Magistra
+  vitae</b>
+  - Наставница жизни. 
+  </p>
+  </li><li>
+<p>
+  <b>Magister
+  dixit</b>
+  - Это сказал учитель. 
+  </p>
+  </li><li>
+<p>
+  <b>Magistra
+  vitae</b>
+  - Наставница жизни.</p>
+  </li><li>
+<p>
+  <b>Mala
+  herba cito crescit</b>
+  - Плохая трава быстро растет.</p>
+  </li><li>
+<p>
+  <b>Manu
+  propri</b>
+  - Собственноручно. 
+  </p>
+  </li><li>
+<p>
+  <b>Manuscriptum</b>
+  – Написанное рукой, манускрипт. 
+  </p>
+  </li><li>
+<p>
+  <b>Manus
+  manum lavat</b>
+  – Рука
+  руку
+  моет.
+  
+  </p>
+  </li><li>
+<p>
+  <b>Margaritas
+  ante porcas</b>
+  - Бисер
+  перед
+  свиньями
+  метать.
+  
+  </p>
+  </li><li>
+<p>
+  <b>Mea
+  culpa, mea maxima culpa</b>.
+  - Моя
+  вина,
+  моя
+  величайшая
+  вина.
+  
+  </p>
+  </li><li>
+<p>
+  <b>Media
+  et remedia</b>.
+  - Способы и средства.</p>
+  </li><li>
+<p>
+  <b>Medice,
+  cura te ipsum</b>.
+  - Врач, исцели самого себя.</p>
+  </li><li>
+<p>
+  <b>Memento
+  mori</b>.
+  - Помни о смерти.</p>
+  </li><li>
+<p>
+  <b>Mensis
+  currentis</b>.
+  - текущего месяца.</p>
+  </li><li>
+<p>
+  <b>Mente
+  et malleo</b>.
+  - Умом и молотком (девиз геологов). 
+  </p>
+  </li><li>
+<p>
+  <b>Мeо
+  voto</b>.
+  - По моему мнению. 
+  </p>
+  </li><li>
+<p>
+  <b>Minimum</b>.
+  - Самое малое</p>
+  </li><li>
+<p>
+  <b>Modus
+  agendi</b>.
+  - Образ действий. 
+  </p>
+  </li><li>
+<p>
+  <b>Modus
+  vivendi</b>.
+  - Образ жизни.</p>
+  </li><li>
+<p>
+  <b>Multum
+  vinum bibere, nоn diu vivere</b>.
+  - Много вина пить, недолго жить.</p>
+  </li><li>
+<p>
+  <b>Mutato
+  nomine</b>.
+  - Под другим названием.</p>
+  </li><li>
+<p>
+  <b>Natura
+  sanat, medicus curat</b>
+  — природа исцеляет, врач лечит</p>
+  </li><li>
+<p>
+  <b>Nemo</b><b>
+  </b><b>judex</b><b>
+  </b><b>in</b><b>
+  </b><b>causa</b><b>
+  </b><b>sua</b>
+  - никто не судья в своем деле 
+  </p>
+  </li><li>
+<p>
+  <b>Nemo</b><b>
+  </b><b>omnia</b><b>
+  </b><b>potest</b><b>
+  </b><b>scire</b>
+  – Никто не может знать всего.</p>
+  </li><li>
+<p>
+  <b>Non
+  sc</b><b>h</b><b>olae,
+  sed vitae discimus</b>.
+  - Не для школы, но для жизни учимся.</p>
+  </li><li>
+<p>
+  <b>Noli
+  me tangere</b>
+  - Не
+  трожь
+  меня.</p>
+  </li><li>
+<p>
+  <b>Non</b><b>
+  </b><b>rex</b><b>
+  </b><b>est</b><b>
+  </b><b>lex</b><b>,
+  </b><b>sed</b><b>
+  </b><b>lex</b><b>
+  </b><b>est</b><b>
+  </b><b>rex</b>.
+  -  Не правитель  является законом, а
+  ​закон является правителем.</p>
+  </li><li>
+<p>
+  <b>Nomen
+  nescio ( N. N.)</b>
+  - некое
+  лицо</p>
+  </li><li>
+<p>
+  <b>Nota
+  bene (NB)</b>
+  - обрати внимание</p>
+  </li><li>
+<p>
+  <b>Nulla</b><b>
+  </b><b>calamitas</b><b>
+  </b><b>sola</b>
+  - Беда не приходит одна.</p>
+  </li><li>
+<p>
+  <b>Omnia</b><b>
+  </b><b>mea</b><b>
+  </b><b>mecum</b><b>
+  </b><b>porto</b>
+  - все свое ношу с собой</p>
+  </li><li>
+<p>
+  <b>Opus
+  citātum</b>
+  -
+  цитированное сочинение</p>
+  </li><li>
+<p>
+  <b>О
+  tempora, о mores!</b>
+  - о времена, о нравы!</p>
+  </li><li>
+<p>
+  <b>Otium
+  post negotium</b>
+  – Отдых после труда.</p>
+  </li><li>
+<p>
+  <b>Paupertas
+  nоn est vitium</b>
+  - бедность - не порок</p>
+  </li><li>
+<p>
+  <b>Pecunia</b><b>
+  </b><b>non</b><b>
+  </b><b>olet</b>
+   - деньги не пахнут (император&nbsp;Веспасиан)</p>
+  </li><li>
+<p>
+  <b>Per
+  aspera ad astra</b>
+  - через
+  тернии
+  к
+  звездам!</p>
+  </li><li>
+<p>
+  <b>Per</b><b>
+  </b><b>fas</b><b>
+  </b><b>et</b><b>
+  </b><b>nefas</b>
+  - правдами и неправдами 
+  </p>
+  </li><li>
+<p>
+  <b>Persona</b><b>
+  </b><b>grata</b>
+  – дипломатический представитель;
+  желательная личность. 
+  </p>
+  </li><li>
+<p>
+  <b>Perpetuum
+  mobile</b>
+  - вечное движение</p>
+  </li><li>
+<p>
+  <b>Post
+  factum</b>
+  - после события</p>
+  </li><li>
+<p>
+  <b>Pro</b><b>
+  </b><b>et</b><b>
+  </b><b>contra</b>
+  - за и против 
+  </p>
+  </li><li>
+<p>
+  <b>Pro
+  dosi</b>
+  - на один прием (разовая доза лекарства)</p>
+  </li><li>
+<p>
+  <b>Pro</b><b>
+  </b><b>forma</b>
+  - для формы, для приличия, для вида 
+  </p>
+  </li><li>
+<p>
+  <b>Pro</b><b>
+  </b><b>memoria</b>
+  - для памяти, в память о чем-либо</p>
+  </li><li>
+<p>
+  <b>Periculum
+  </b><b>est</b><b>
+  in mora!</b>
+  - Опасность в промедлении!</p>
+  </li><li>
+<p>
+  <b>Quasi</b>
+  – квази,
+  якобы, мнимый. 
+  </p>
+  </li><li>
+<p>
+  <b>Qui
+  aures habet, audiat</b>
+  – Имеющий уши да услышит.</p>
+  </li><li>
+<p>
+   <b>Quid
+  prodest</b>
+  - кому это выгодно? Кому это полезно? 
+  </p>
+  </li><li>
+<p>
+  <b>Qui
+  pro quo</b>
+  - одно вместо другого, недоразумение. 
+  </p>
+  </li><li>
+<p>
+  <b>Qui
+  scribit, bis legis</b>
+  - кто пишет, тот дважды читает.</p>
+  </li><li>
+<p>
+  <b>Quod
+  licet Jovi, nоn licet bovi</b>
+  - что позволено Юпитеру, то не позволено
+  быку.</p>
+  </li><li>
+<p>
+  <b>Qui
+  quaerit reperit</b>
+  – кто ищет – тот найдет. 
+  </p>
+  </li><li>
+<p>
+  <b>Repetitio
+  est mater studiorum</b>
+  - повторение
+  - мать
+  учения.</p>
+  </li><li>
+<p>
+  <b>Sapienti</b><b>
+  </b><b>sat</b>
+  - разумному достаточно; умный поймет. 
+  </p>
+  </li><li>
+<p>
+  <b>Scientia
+  potentia est</b>
+  - знание – сила</p>
+  </li><li>
+<p>
+  <b>Sol
+  lucet omnibus</b>
+  - солнце светит для всех</p>
+  </li><li>
+<p>
+  <b>Scio
+  me nihil scire</b>
+  – Я знаю, что ничего не знаю.</p>
+  </li><li>
+<p>
+  <b>S</b><b>i
+  vis pacem, para bellum</b>
+  - Хочешь мира - готовься к войне. 
+  </p>
+  </li><li>
+<p>
+  <b>Serva
+  me, servabo te</b>.
+  - Ты мне, я тебе.</p>
+  </li><li>
+<p>
+  <b>Satis
+  verborum!</b>
+  - Довольно слов!</p>
+  </li><li>
+<p>
+  <b>Sic
+  transit gloria mundi</b>
+  — так проходит земная слава</p>
+  </li><li>
+<p>
+  <b>Si
+  vales, bene est, ego valeo</b>
+  — Если ты здоров – хорошо, я здоров</p>
+  </li><li>
+<p>
+  <b>Status
+  quo</b>
+  — существующий порядок вещей</p>
+  </li><li>
+<p>
+  <b>Tabula
+  rasa.</b>
+  – Чистая доска. 
+  </p>
+  </li><li>
+<p>
+  <b>Taedium
+  vitae.</b>
+  - Отвращение к жизни.</p>
+  </li><li>
+<p>
+  <b>Tarde
+  venientibus ossa</b>.
+  - Опоздавшим - кости.</p>
+  </li><li>
+<p>
+  <b>Tempora
+  mutantur et nos mutantur in illis</b>
+  - Времена меняются и мы меняемся вместе
+  с ними (Овидий). 
+  </p>
+  </li><li>
+<p>
+  <b>Tempori
+  parce</b>
+  - Береги время. 
+  </p>
+  </li><li>
+<p>
+  <b>Tempus
+  nemini</b>
+  - Время никого не ждет. 
+  </p>
+  </li><li>
+<p>
+  <b>Terra
+  incognita</b>
+  - Неведомая земля. 
+  </p>
+  </li><li>
+<p>
+  <b>Tertium
+  nоn datur</b>
+  - Третьего не дано. 
+  </p>
+  </li><li>
+<p>
+  <b>Timeo
+  danaos et dona ferentes</b>
+  — боюсь данайцев, даже приносящих дары</p>
+  </li><li>
+<p>
+  <b>Tres
+  faciunt collegium</b>
+  - Трое составляют коллегию. 
+  </p>
+  </li><li>
+<p>
+  <b>Tuto,
+  cito, jucunde</b>
+  - Безопасно, быстро, приятно.</p>
+  </li><li>
+<p>
+  <b>Ubi
+  bene, ibi patria</b>
+  - "Где хорошо, там и родина" -
+  высказывание приписывают римскому
+  трагику Пакувию. 
+  </p>
+  </li><li>
+<p>
+  <b>Ubi
+  mel, ibi fel</b>
+  - Где мед, там и желчь, т.е. нет худа без
+  добра.</p>
+  </li><li>
+<p>
+  <b>Veni,
+  vidi, vici</b>
+  - Пришел, увидел, победил.</p>
+  </li><li>
+<p>
+  <b>Vivere
+  est cogitare</b>
+  - Жить - значит мыслить.</p>
+  </li><li>
+<p>
+  <b>Vae
+  victis</b>
+  - Горе побежденному.</p>
+  </li><li>
+<p>
+  <b>Veto</b>
+  — запрещаю</p>
+  </li><li>
+<p>
+  <b>Volens
+  nolens</b>
+  – Волей – неволей; хочешь – не хочешь.
+  
+  </p>
+  </li><li>
+<p>
+  <b>Vox
+  populi, vox Dei</b>
+  - глас народа - глас божий.</p>
+</li></ol>
 
 
  <table id="wordlist" class="wordlist">

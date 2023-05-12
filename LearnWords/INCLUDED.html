@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Include html file in html</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script >
+    $(function(){
+        $("#htmlfile").load("INCLUDED2.html")
+    });
+
+
+    
+</script>
+</head>
+<body>
+    <h2>BELOW LINES LOADED FROM CONTENT.HTML FILE</h2>
+  <div id="htmlfile"></div>
+  <script type="text/javascript">
+onload = function chkInternetStatus() {
+    if(navigator.onLine) {
+        alert("Hurray! You're online!!!");
+    } else {
+        alert("Oops! You're offline. Please check your network connection...");
+    }
+}
+</script>
+</body>
+</html>

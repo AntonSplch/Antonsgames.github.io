@@ -1,0 +1,474 @@
+body {color: black;
+    font-family: Verdana, Arial, Helvetica, sans-serif; 
+      font-size: 15pt;
+      padding-left: 2px;
+      padding-right: 2px;
+      padding-top: 2px;
+      padding-bottom: 2px;
+      text-align: right;
+      
+    }
+  
+      #start {position:fixed;
+      top:400; 
+    left:300;}
+  
+  .table {
+  border-style:padding;
+  
+  }
+  
+  .firstRoundwords
+  {text-align: center;
+  
+  color: black;
+  
+  
+  border:1px;
+    border-width: 100%;
+    border-top: 0.1px;
+    width: 100%;
+    border-style: groove;
+    border-color:blueviolet;
+    background-color: rgb(163, 162, 162); 
+  }
+  
+  #left
+  {
+  cursor:pointer;
+  text-align:center;
+  border-style:padding;
+  }
+  
+  .iframe {
+  width: 1000px;
+  height:500px;
+  }
+  
+  #alert {width: 350px;
+    cursor:pointer;}
+  
+    .Cursor2
+    {cursor:pointer;}
+  
+  .myResult {width: 350px;
+    cursor:pointer;
+    font-size: 20px;
+    font-family: fantasy;
+  position:fixed;
+  top: 10;    
+  left: 10;
+  color:rgb(54, 32, 94);}
+  
+  .alert1 {
+        top:0; 
+    left:10;
+    border-color: black; /* Цвет границы */ 
+      border-style: solid; /* Стиль границы */  
+  position:fixed;
+      color:red;
+   
+      }
+  
+      .alert2 {
+        top:50; 
+    left:10;
+    border-color: black; /* Цвет границы */ 
+      border-style: solid; /* Стиль границы */  
+  position:fixed;
+      color:rgb(7, 128, 147);
+      }
+  
+      .alert3 {
+        top:100; 
+    left:10;
+    border-color: black; /* Цвет границы */ 
+      border-style: solid; /* Стиль границы */  
+  position:fixed;
+      color:rgb(0, 0, 0);
+      }
+  
+      .alert4 {
+        top:150; 
+    left:10;
+    border-color: black; /* Цвет границы */ 
+      border-style: solid; /* Стиль границы */  
+  position:fixed;
+      color:rgb(143, 142, 142);
+      }
+  
+      .alert5 {
+        top:200; 
+    left:10;
+    border-color: black; /* Цвет границы */ 
+      border-style: solid; /* Стиль границы */  
+  position:fixed;
+      color:rgb(0, 73, 2);
+      }
+  
+      .alert6 {
+        top:250; 
+    left:10;
+    border-color: black; /* Цвет границы */ 
+      border-style: solid; /* Стиль границы */  
+  position:fixed;
+      color:rgb(203, 16, 194);
+      }
+  
+      .alert7 {
+        top:300; 
+    left:10;
+    border-color: black; /* Цвет границы */ 
+      border-style: solid; /* Стиль границы */  
+  position:fixed;
+      color:rgb(232, 214, 10);
+      }
+  
+      .alert0 {
+        top:350; 
+    left:10;
+    border-color: black; /* Цвет границы */ 
+      border-style: solid; /* Стиль границы */  
+  position:fixed;
+      color:rgb(68, 0, 255);
+      }
+  
+      /* это табло информации c моей первой анимацией*/
+      #game {
+        top:410; 
+    left:200;
+    width: 140;
+    font-size: 12px;
+    border-color: black; /* Цвет границы */ 
+      border-style: solid; /* Стиль границы */  
+  position:fixed;
+  
+      color:rgb(0, 0, 0);
+      animation: colorChange 4.0s steps(2) infinite;     
+  }
+  
+  @keyframes colorChange {
+  
+      100% {
+          
+          background-color:rgb(143, 142, 142);
+          
+      }
+      
+     
+  }
+  
+  
+  
+     /* это надпись со "сказкой" */
+      #back {
+        font-size:11px;
+       
+        padding-left:10px;
+        padding-right:10px;
+        margin-right: 10px;
+        margin-left:10px;
+      
+        font-weight: bold;
+        position:fixed;
+        top:360;
+        left:140px;
+        width:220px;
+      text-align: right;
+        }
+  
+      #wordlist, #wordlist3 {
+        position:relative;
+        font-size:0px;
+        padding-top:0px;
+        padding-bottom:0px;
+  
+         }
+  
+  #myDIV {
+    width: 100%;
+    padding: 50px 0;
+    text-align: center;
+    background-color: lightblue;
+    margin-top: 20px;
+  }
+  
+  #p3 {top:520;
+    position:fixed;
+    width:400;
+    font-size:13px;
+    cursor:grab;
+    border: dotted;
+  }
+  
+  .hidden {display:none;}
+  
+  #mainWord {background-color: brown;
+  font-weight: bold;}
+  
+  #round2 {left:20;
+    top: 1;
+    position:fixed;
+    cursor:pointer;
+    border-color: black; /* Цвет границы */ 
+      border-style: solid; /* Стиль границы */  }
+  
+      #SuperWord  {
+  
+   
+        height:100px;
+        width:300px;
+        font-size: 50px;
+       
+         margin-left:10px;
+      background-color: rgb(255, 210, 210);
+  
+      }
+      #window
+      {font-style:oblique;
+      font-family:Impact, 'Arial Narrow Bold', sans-serif;
+      size: 90%;
+      position: fixed;
+      left:0px;
+       }
+  
+      
+  
+       .sprite-container {
+      height: 100vh; /*100% высоты экрана*/
+      display: flex;
+      align-items: center; /*чтобы картинка была по центру*/
+  }
+  
+  .ANGEL {background: url(ANGEL.png) 0px 0px; /*картинка со спрайтами с позицией в верхнем левом углу (0px 0px)*/
+    position:absolute;
+    left:50px;
+  top:410px;
+  
+  
+  }
+  
+  .ANGELgetsHurt {background: url(ANGELgetsHurt.png) -30px 0px;
+    height: 120px; /*высота спрайта (высота одного кадра)*/
+      width: 100px; 
+    position: static;
+    left:0px;
+  } /* по идее можно зарефакторить*/
+  
+  
+  .DEMON {background: url(DEMON.png) 0px 0px;
+    position:absolute;
+    left:200px;
+  top:410px;
+  
+  }
+  
+  .ANGELhits {background: url(ANGEL.png) -250px 0px;
+    
+  }
+  
+  .DEMONhits {background: url(DEMON.png) -405px 0px;
+    
+  }
+  
+  .DEMONgetsHurt {background: url(DEMON.png) -200px 0px;
+    position: static;
+  } /* менять классы - и только */
+  
+  .DEMONdies {
+    height: 120px; /*высота спрайта (высота одного кадра)*/
+      width: 100px; /*ширина спрайта (ширина одного кадра)*/
+      background: url(demonDefeat.png);
+  
+    animation: die 1s steps(9) forwards, /*forwards - последний кадр анимации*/
+          step 1s linear infinite; /*ещё одна анимация, длительностью 15s, линейный, зацикленый*/
+          left: 0;
+  
+  } 
+  
+  
+  @keyframes die {
+    10% {
+          background-position: 0px; /*ширина картинки со спрайтами*/
+      }
+    20% {
+          background-position: -100px; /*ширина картинки со спрайтами*/
+      }
+    30% {
+          background-position: -200px; /*ширина картинки со спрайтами*/
+      }
+    40% {
+          background-position: -300px; /*ширина картинки со спрайтами*/
+      }
+    60% {
+          background-position: -300px; /*ширина картинки со спрайтами*/
+      }
+    80% {
+          background-position: -400px; /*ширина картинки со спрайтами*/
+      }
+      90% {
+          background-position: -500px; /*ширина картинки со спрайтами*/
+      }
+      100% {
+          background-position: -670px; /*ширина картинки со спрайтами*/
+      }
+  }
+  
+  
+  .ANGELdies { height: 120px; /*высота спрайта (высота одного кадра)*/
+      width: 100px; /*ширина спрайта (ширина одного кадра)*/
+      background: url(angelDefeat.png);}
+  
+  
+  
+  #ANGEL 
+  {position: fixed;
+    left:0px;
+  bottom:0px;}
+  #DEMON
+  {position: fixed;
+    left:100px;
+  bottom:0px;}
+  
+  
+  .sprite-image {
+    
+      height: 120px; /*высота спрайта (высота одного кадра)*/
+      width: 100px; /*ширина спрайта (ширина одного кадра)*/
+      
+      animation: play 4.0s steps(2) infinite, /*анимация называется play, скорость анимации 0.8s, нужно сделать 1 шагов (6 кадров), анимация происходит непрерывно (зациклено) - infinite*/
+          step 15s linear infinite; /*ещё одна анимация, длительностью 15s, линейный, зацикленый*/
+     
+      left: 0;
+  }
+  
+  @keyframes play {
+      100% {
+          background-position: -200px; /*ширина картинки со спрайтами*/
+      }
+  }
+  
+  .healthDemon {
+    position:relative;
+    
+    border:3px;
+    border-width: 100%;
+    border-top: 3px;
+    width: 100%;
+    border-style: groove;
+    border-color:blueviolet;
+    background-color: red; 
+  }
+  
+  
+  
+  .healthAngel {
+    position:relative;
+    
+    border:3px;
+    border-width: 100%;
+    border-top: 3px;
+    width:100%;
+    border-style: groove;
+    border-color:rgb(212, 8, 8);
+    background-color: red; 
+  }
+  
+  #timer {
+    position:fixed;
+    left:210;
+    top:470;
+    opacity: 0.5;
+  
+  }
+  
+  .ui-dialog-titlebar-close {
+      visibility: hidden;
+  }
+  
+  #Round2_5 {
+  font-size: 60%;
+  }
+  
+  #answerWord
+  {
+    border:3px;
+    border-width: 100%;
+    border-top: 3px;
+    width:100%;
+    border-style: groove;
+    border-color:rgb(212, 8, 8);
+    cursor:pointer; 
+  }
+  
+  #Window1
+  {
+    border:3px;
+    border-color: black;
+   position: fixed; 
+   left:0px;
+  top:10px;
+  width:300px;
+  height:200px;
+  font-size: 50%;
+  size:50%;
+  }
+  
+  #dictionary, #username, #timer2, #level, #submit
+  /* сработала запятая для нескольких правил! */
+  {height:40%;
+    font-size: 110%;
+    font-weight: bold;
+  background-color: rgb(255, 210, 210);}
+  
+  #username
+  {font-size: 200%;
+  width: 50%}
+  
+  #startAngel {position:fixed;
+  left: -500;}
+  #startDemon {position:fixed;
+  left: 800;}
+  
+  
+  
+  span {text-align: left;
+  position:absolute;
+  left:0;
+  top:400px;
+  color: black;
+  width: 200px;
+  border-style: dotted;
+      border-width: 3px;
+      border-left-width: 2px;
+      border-right-width: 2px;
+      border-color: red;
+      border-radius: 100px;
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  animation: color 2.0s steps(2) infinite;}
+  
+  @keyframes color {
+      100% {
+          
+  background-color: red;
+  font-family: fantasy;
+          
+          
+      }
+  
+    }
+  
+    .zeroCord {
+    position:fixed;
+    opacity:.2;
+    left:0;
+  top:80;}
+
+  .small {
+   font-size: 20%;
+  }
+
+  .big {
+    font-size: 200%;
+ font-weight: bold;
+  }
