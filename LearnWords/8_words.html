@@ -456,7 +456,7 @@ function Round3(Eng,Rus, correct, mistakes, game)
     if (Boolean(password.value) == false) {
       //window.alert("ВВЕДИТЕ ОТВЕТ//ENTER the TRANSLATION");
       // тест эксперимент
-      game.innerHTML = "<p class='big'>ВВЕДИТЕ ПЕРЕВОД<BR>ENTER TRANS-<BR>LATION<p>";
+      game.innerHTML = "<p class='big'>ВВЕДИТЕ ОТВЕТ<BR>ENTER TRANS-<BR>LATION<p>";
       
      } 
      else
@@ -560,7 +560,7 @@ settings.finalCount=true;
     mistakes + "</br>your right answers:" + correct + "</br> time in sec:" + seconds + "</br> score:"+ (correct*100 - mistakes*10 - seconds*10));
     //тест вывода вместо перебора?
     for (num in Eng)
-    {settings.Result.append(`</br> ${Eng[num]} -- ${Rus[num]}`)} 
+    {settings.Result.append(`</br class="small"> ${Eng[num]} -- ${Rus[num]}`)} 
     //game.html();
  $('#game').html("<p>the game is OVER</p>" + "  <P><a href='#'  id='p2' onclick='location.reload(); return false;'>TRY MORE/TO  <br> </a> <a href=''../index.html' id='p'>GO BACK</a></p>" );
 
@@ -650,7 +650,7 @@ top:100,
 textAlign: 'left',
 },
 2000 
-).toggle( "bounce", { times: 3 }, "slow" );
+).toggle( "bounce", { times: 3 }, "slow" ).hide('1000s');
 //ах эти старые сладкие эффекты
 
 $("#startDemon").animate(
