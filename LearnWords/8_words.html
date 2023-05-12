@@ -650,8 +650,9 @@ top:100,
 textAlign: 'left',
 },
 2000 
-).toggle( "bounce", { times: 3 }, "slow" ).hide('1000s');
-//ах эти старые сладкие эффекты
+).hide('1000s');
+//ах эти старые сладкие эффекты .toggle( "bounce", { times: 3 }, "slow" 
+//переглючило на сервере
 
 $("#startDemon").animate(
 {
@@ -675,9 +676,9 @@ top: '350',
 //textAlign: 'left',
 },
 3000 
-).toggle( "pulsate" ).hide('1000s');
+).hide('1000s');
 
-
+// toggle( "pulsate" )
 //$( "body" ).css( "backgroundImage", "red");
 //delay(1000).queue(function(n) {
    //$(this).css( "backgroundColor", "white"); 
