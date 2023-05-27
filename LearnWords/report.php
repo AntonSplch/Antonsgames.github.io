@@ -182,33 +182,38 @@ if ($conn->connect_error) {
 }
 
 // SQL QUERY "SELECT * FROM `score` ORDER BY Score;" .
-$query = "INSERT INTO score (Nick, Place, Timer, Dict, Score) " .  "VALUES ('$result3->name', '$result3->place', '$result3->seconds', '$result3->DICT', '$result3->score');";
+//$query = "INSERT INTO score (Nick, Place, Timer, Dict, Score) " .  "VALUES ('$result3->name', '$result3->place', '$result3->seconds', '$result3->DICT', '$result3->score');";
 
 
 // FETCHING DATA FROM DATABASE EXP -> МУЛЬТИЗАПРОС есть multiquery
 // CAST - сбор
-$conn->query($query);
-$result = $conn->query("SELECT * FROM `score` ORDER BY CAST(Score AS INTEGER) DESC;");
+$conn->query("INSERT INTO score (Nick, Place, currentTime, Timer, Dict, Score) " .  "VALUES ('$result3->name', '$result3->place', '$result3->currentTime', '$result3->seconds', '$result3->DICT', '$result3->score');");
+$result = $conn->query("SELECT * FROM `score` ORDER BY CAST(Score AS INTEGER) DESC LIMIT 6;");
 // DESC --- To sort the records in DESCending order, use the DESC keyword.
 // INTEGER нужен для сортировки как таковой
   if ($result->num_rows > 0) 
   {
       // OUTPUT DATA OF EACH ROW, в виде ассоц массива
+      // how to make a count-l number
+     $counter=1;
       while($row = $result->fetch_assoc())
       {
-          echo  $row["Nick"]. " - Cловарь: " .
-              $row["Dict"]. " | Место: " . 
-              $row["Place"]. " | Время: " . 
-              $row["Timer"]. " | Очки: " . 
-              $row["Score"]. "<br>";
+          echo  "<br>" . $counter . " " .
+           $row["Nick"]. " from " . 
+           $row["Place"]. " - <br>" .
+           $row["Dict"]. " - " .
+           $row["Timer"]. "sec. - "  .
+             $row["Score"]. "%";
+             $counter =  $counter + 1;
+           //$row["Dict"]. " - " . 
       }
   } 
   else {
       echo "0 results";
   }
 
+  $conn->close();
 
- $conn->close();
 ?>
 
   </body>
