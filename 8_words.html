@@ -5,8 +5,7 @@
 
 </style>
 <head> 
-  <meta charset="UTF-8">
-  
+  <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
   
  <title> 8 случайных слов </title> 
 
@@ -35,10 +34,10 @@
   <div>
   <label for="planet" сlass="lаbеl">ЯЗЫК (LANGUAGE)</label>
   <select name="planet" id="dictionary">
-  <option>RUSSIAN-ENGLISH DICTIONARY 5000 WORDS</option>
+  <option>RUS-ENG 5000 WORDS</option>
   <option>LATIN</option>
-  <option>РУССКИЙ ЯЗЫК: ЧАСТИ РЕЧИ</option>
-  <option> РУССКИЙ ЯЗЫК: СРЕДСТВА ВЫРАЗИТЕЛЬНОСТИ </option>
+  <option>RUSSIAN: CHASTI RECHI</option>
+  <option> RUSSIAN: SREDSTVA VYRAZ.</option>
   </select>
 <p></p>
   <input type="submit" name="submit" id="submit" ^
@@ -64,8 +63,9 @@
   <div class="timer" id="timer">0 sec</div>
  
   <div id='Result' class="MyResult"></div>
+  <div id='Result2' class="MyResult"></div>
 
-  <div id="window" title="THE FINAL ROUND">  <img src="finalQuestion.jpg"></br>
+  <div id="window" title="THE FINAL ROUND"> </br>
     Now TYPE (напечатайте) the answer...<p id="theWord"></p>
     <P id="answerWord">----OK----</P>
    <div id="finalInput"> <input type="text" id="SuperWord"></div>
@@ -117,10 +117,6 @@
 
   <script language="JavaScript">
 
-
-
-
-
 //создаю объект настроек. потом добавить конструктор!
 const settings = {
   name: '',
@@ -129,10 +125,12 @@ const settings = {
   score: '',
   timer: false,
   seconds: 0,
+  currentTime: '',
   Eng: [],
   Rus: [],
   recordMistakes: [],
   partsOfSpeech_edited: [],
+  flag: 'false',
   showList: function (param) {
     settings.sumupWords.text("");
     settings.sumupWords.show();
@@ -140,24 +138,39 @@ const settings = {
             settings.sumupWords.hide();
             $('#game').html("<p>the game is OVER</p>" + "  <P><a href='#'  id='p2' onclick='location.reload(); return false;'>TRY MORE/TO  <br> </a> <a href=''../index.html' id='p'>GO BACK</a></p>" );
           }});
-          if (param == 'list')
+          if (param == 'words')
+          {
     for (num in Eng)
-   {
-    settings.sumupWords.append(`<i> ${Eng[num]} -- ${Rus[num]} </i></br> `);}
-  if (param == 'words')
+   
+    settings.sumupWords.append(`<i> ${Eng[num]} -- ${Rus[num]} </i></br> `);
+  }
+
+  if (param == 'score' && settings.flag === 'true')
+ {  settings.sumupWords.text("");
+        settings.sumupWords.append("<i class ='red'>ИМЯ - ОТКУДА - СЛОВАРЬ - ВРЕМЯ - ОЧКИ(%)</i>");
+        settings.sumupWords.append(settings.bestScoreTable);}
+
+  if (param == 'score' && settings.flag === 'false')
   { 
+    settings.flag = 'true';
+    settings.sumupWords.text("LOADING...ЗАГРУЗКА...");
     str = JSON.stringify(settings);
       var xhttp;
       if (str == "") {
-       window.alert("nono");
+       window.alert("no singnal, sorry");
         return;
       }
       xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
         response = this;
+        settings.bestScoreTable = response.response;
+        settings.sumupWords.text("");
+        settings.sumupWords.append("<i class ='red'>ИМЯ - ОТКУДА - СЛОВАРЬ - ВРЕМЯ - ОЧКИ(%)</i>");
+        settings.sumupWords.append(settings.bestScoreTable);
+
         //.responseText;
-        settings.sumupWords.append(response.response);
+       
         //document.getElementById("txtHint").innerHTML = response.response;
        //console.log(JSON.parse(response));
         }
@@ -165,7 +178,9 @@ const settings = {
       
       xhttp.open("GET", "report.php?q="+str, true);
       xhttp.send();
+     
     ;}
+
   }, 
   timer: function () {
     ++settings.seconds;
@@ -226,7 +241,7 @@ wordsOfExpression =
 
 Инверсия: Тебя мы ждали долго, мастер Йода писал текст этот
 
-Риторический вопрос: Кто ж не сможет его догнать?, О чем задумалась, берёза?
+Риторический вопрос: Кто ж не сможет его догнать?, О чем задумалась/ берёза?
 
 Риторическое обращение: О Море! Как же я скучал!
 
@@ -614,16 +629,20 @@ settings.finalCount=true;
       {text= "YOU WIN";
       $( "body" ).prepend( "<img src='startAngel.jpg' class='zeroCord'>" );
     }
-     //yourFinalAnswer +  BETTER FORMULA?
+     //yourFinalAnswer +  BETTER FORMULA? TEST 26.05
+     // вес параметров - 50 на 50
+     numofQuestiones = correct + mistakes;
+     countingofScore = (((numofQuestiones - mistakes)/numofQuestiones)*0.5 + ((400 - settings.seconds)/1000)*0.5)*100;
+     settings.score = Math.floor(countingofScore);
     settings.Result.html(totalResult + " ! " + text + " , " + settings.name + "!" + "</br>ОШИБКИ:" +
-    mistakes + " ПРАВИЛЬНО:" + correct + "</br> time in sec:" + settings.seconds + " score:"+ (correct*100 - mistakes*10 - settings.seconds*10) + "</BR>");
+    mistakes + " ПРАВИЛЬНО:" + correct + "</br> time in sec:" + settings.seconds + " score:"+ settings.score + "%</BR>");
     //тест вывода вместо перебора?
     //мб использовать деструктур-е? details ОКНО? onclick
 //тест
  // showList(); TEST
 
-  settings.Result.append(`<P onclick = "settings.showList(param='words')" CLASS = "Cursor2 red" "cursor">ВСПОМНИТЬ СВОЙ СПИСОК СЛОВ</P>`);
-  settings.Result.append(`<P onclick = "settings.showList(param='score')" CLASS = "Cursor2 red" "cursor">ЛУЧШИЕ РЕЗУЛЬТАТЫ</P>`);
+  settings.Result.append(`<P onclick = "settings.showList(param = 'words')" CLASS = "Cursor2 red" "cursor">ВСПОМНИТЬ СВОЙ СПИСОК СЛОВ</P>`);
+  settings.Result.append(`<P onclick = "settings.showList(param = 'score')" CLASS = "Cursor2 red" "cursor">ЛУЧШИЕ РЕЗУЛЬТАТЫ</P>`);
 //+ отправить AJAX
   }
 
@@ -667,8 +686,17 @@ $('#Round3Window').hide();
 
     function Done()
     {
+      const date = new Date();
 
+let day = date.getDate();
+let month = date.getMonth() + 1;
+let year = date.getFullYear();
 
+// This arrangement can be altered based on how we want the date's format to appear.
+settings.currentTime = `${day}-${month}-${year}`;
+
+ 
+//ловлю местоположение
       function json(url) {
           return fetch(url).then(res => res.json());
         }
@@ -683,7 +711,7 @@ $('#Round3Window').hide();
          country = data.country_name;
 
      
-        settings.place = city+ " " +country;
+        settings.place = city + " " + country;
           // so many more properties
         });
 
@@ -825,6 +853,7 @@ top: '350',
    //тест
    pannel.show();
    settings.Result = $('#Result');
+   settings.Result = $('#Result2');
 
 
    //убираю окно финального раунда или надо вставить внутри
@@ -864,7 +893,7 @@ for(countCycles=1;countCycles<=allСycles;countCycles++){
 
 // ВЫБОР СЛОВАРЯ (вывести в отдельную функцию??)
 switch(settings.DICT) {
-case "RUSSIAN-ENGLISH DICTIONARY 5000 WORDS":
+case "RUS-ENG 5000 WORDS":
       {
      
       for(i=0;i<8;i++) {
@@ -925,11 +954,11 @@ if (child2.indexOf('—') > -1)
 
    
         // тест -- моя обработка не работает... была проблема с || в условии
-      case "РУССКИЙ ЯЗЫК: ЧАСТИ РЕЧИ":
+      case "RUSSIAN: CHASTI RECHI":
       { cutTheList = partsOfSpeech.split('\n\n');
     fromTable();
   break}
-      case "РУССКИЙ ЯЗЫК: СРЕДСТВА ВЫРАЗИТЕЛЬНОСТИ":
+      case "RUSSIAN: SREDSTVA VYRAZ.":
        {cutTheList = wordsOfExpression.split('\n\n');
       fromTable();
       break;
