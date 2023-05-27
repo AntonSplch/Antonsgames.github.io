@@ -484,7 +484,7 @@ body {color: black;
     
   width: 330px;
   height: 400px;
-  background-image: url(./scores.jpg);
+  background-image: url(scores.jpg);
   background-repeat: no-repeat;
   position: fixed;
   /*border: 5px solid;
