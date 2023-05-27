@@ -1,5 +1,11 @@
+
+@font-face {
+  font-family: myFirstFont;
+  src: url(Tiger.otf);
+}
+
 body {color: black;
-    font-family: Verdana, Arial, Helvetica, sans-serif; 
+    font-family: myFirstFont; 
       font-size: 15pt;
       padding-left: 2px;
       padding-right: 2px;
@@ -484,7 +490,7 @@ body {color: black;
   { 
     
   width: 336px;
-  height: 404px;
+  height: 390px;
   background-image: url(./scores.jpg);
   background-repeat: no-repeat;
   position: fixed;
@@ -496,7 +502,9 @@ body {color: black;
   font-size: 50%;
   padding: 50px 0;
   z-index: 2;
- 
 
   }
+
+  .normalFont
+  {font-family: Verdana, Arial, Helvetica, sans-serif;}
   

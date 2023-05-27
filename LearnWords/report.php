@@ -1,4 +1,4 @@
-
+<head><link rel="stylesheet" href="8_words.css"></head>
 <body>
 <?php
 
@@ -188,7 +188,7 @@ if ($conn->connect_error) {
 // FETCHING DATA FROM DATABASE EXP -> МУЛЬТИЗАПРОС есть multiquery
 // CAST - сбор
 $conn->query("INSERT INTO score (Nick, Place, currentTime, Timer, Dict, Score) " .  "VALUES ('$result3->name', '$result3->place', '$result3->currentTime', '$result3->seconds', '$result3->DICT', '$result3->score');");
-$result = $conn->query("SELECT * FROM `score` ORDER BY CAST(Score AS INTEGER) DESC LIMIT 10;");
+$result = $conn->query("SELECT * FROM `score` ORDER BY CAST(Score AS INTEGER) DESC LIMIT 8;");
 // DESC --- To sort the records in DESCending order, use the DESC keyword.
 // INTEGER нужен для сортировки как таковой
   if ($result->num_rows > 0) 
@@ -198,12 +198,13 @@ $result = $conn->query("SELECT * FROM `score` ORDER BY CAST(Score AS INTEGER) DE
      $counter=1;
       while($row = $result->fetch_assoc())
       {
-          echo  "<br>" . $counter . " <i class ='red'>" .
+          echo  "<br><div class='normalFont'><strong class='red'>" . 
+          $counter . " " .
            $row["Nick"]. " from " . 
-           $row["Place"]. " - </i><br>" .
+           $row["Place"]. " - </strong><br>" .
            $row["Dict"]. " - " .
            $row["Timer"]. "sec. - "  .
-             $row["Score"]. "%";
+             $row["Score"]. "%</div>";
              $counter =  $counter + 1;
            //$row["Dict"]. " - " . 
       }
