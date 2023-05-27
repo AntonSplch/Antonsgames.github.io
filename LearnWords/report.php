@@ -188,7 +188,7 @@ if ($conn->connect_error) {
 // FETCHING DATA FROM DATABASE EXP -> МУЛЬТИЗАПРОС есть multiquery
 // CAST - сбор
 $conn->query("INSERT INTO score (Nick, Place, currentTime, Timer, Dict, Score) " .  "VALUES ('$result3->name', '$result3->place', '$result3->currentTime', '$result3->seconds', '$result3->DICT', '$result3->score');");
-$result = $conn->query("SELECT * FROM `score` ORDER BY CAST(Score AS INTEGER) DESC LIMIT 6;");
+$result = $conn->query("SELECT * FROM `score` ORDER BY CAST(Score AS INTEGER) DESC LIMIT 8;");
 // DESC --- To sort the records in DESCending order, use the DESC keyword.
 // INTEGER нужен для сортировки как таковой
   if ($result->num_rows > 0) 

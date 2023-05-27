@@ -478,18 +478,19 @@ body {color: black;
  font-weight: bold;
   }
 /* очень долго пытался вытянуть по центру текст padding - общий и верт и гор
+оказалось, что css пишется в кэше
 */
   #sumupWords
   { 
     
-  width: 330px;
-  height: 400px;
-  background-image: url(scores.jpg);
+  width: 336px;
+  height: 404px;
+  background-image: url(./scores.jpg);
   background-repeat: no-repeat;
   position: fixed;
-  /*border: 5px solid;
+  border: 5px solid;
    color:yellow;
-  */
+  
   
   text-align: center;
   font-size: 50%;
